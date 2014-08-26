@@ -1,0 +1,53 @@
+<!--
+  KeyShot VR
+  (c) Copyright 2012-2013 Luxion ApS - All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>KeyShotVR</title>
+    <style type="text/css">
+      body { -ms-touch-action: none; }
+    </style>
+    <script type="text/javascript" src="300_360_KeyshotVR/files/KeyShotVR.js"></script>
+    <script type="text/javascript">
+      var keyshotVR;
+
+      function initKeyShotVR() {
+        var nameOfDiv = "KeyShotVR";
+        var folderName = "300_360_KeyshotVR";
+        var imageWidth = 1281;
+        var imageHeight = 681;
+        var backgroundColor = "#FFFFFF";
+        var uCount = 14;
+        var vCount = 9;
+        var uWrap = true;
+        var vWrap = false;
+        var uMouseSensitivity = -0.019444;
+        var vMouseSensitivity = 0.056250;
+        var uStartIndex = 7;
+        var vStartIndex = 0;
+        var minZoom = 1.000000;
+        var maxZoom = 2.000000;
+        var rotationDamping = 0.800000;
+        var downScaleToBrowser = false;
+        var addDownScaleGUIButton = false;
+        var addPlayGUIButton = false;
+        var imageExtension = "jpg";
+        var showLoading = true;
+        var loadingIcon = "icon.jpg"; // Set to empty string for default icon.
+        var allowFullscreen = true; // Double-click in desktop browsers for fullscreen.
+
+        keyshotVR = new keyshotVR(nameOfDiv,folderName,imageWidth,imageHeight,backgroundColor,uCount,vCount,uWrap,vWrap,uMouseSensitivity,vMouseSensitivity,uStartIndex,vStartIndex,minZoom,maxZoom,rotationDamping,downScaleToBrowser,addDownScaleGUIButton,addPlayGUIButton,imageExtension,showLoading,loadingIcon,allowFullscreen);
+      }
+
+      window.onload = initKeyShotVR;
+    </script>
+  </head>
+  <body oncontextmenu="return false;">
+    <div id="KeyShotVR"></div> 
+  </body>
+</html>
