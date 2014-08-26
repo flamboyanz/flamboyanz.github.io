@@ -10,8 +10,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>KeyShotVR</title>
     <style type="text/css">
+        #wrapper{height:300px !important; position:relative; top:0; }
+        #KeyShotVR{ position:absolute; }
       body { -ms-touch-action: none; }
-      #KeyShotVR{ }
+
     </style>
     <script type="text/javascript" src="300_360_KeyshotVR/files/KeyShotVR.js"></script>
     <script type="text/javascript">
@@ -20,8 +22,8 @@
       function initKeyShotVR() {
         var nameOfDiv = "KeyShotVR";
         var folderName = "300_360_KeyshotVR";
-        var imageWidth = 320;
-        var imageHeight = 300;
+        var imageWidth = 1281;
+        var imageHeight = 681;
         var backgroundColor = "#FFFFFF";
         var uCount = 14;
         var vCount = 9;
@@ -48,7 +50,9 @@
       window.onload = initKeyShotVR;
     </script>
   </head>
-  <body oncontextmenu="return false;">
-    <div id="KeyShotVR"></div>
+  <body>
+    <div id="wrapper">
+        <div id="KeyShotVR"></div>
+    </div>
   </body>
 </html>
