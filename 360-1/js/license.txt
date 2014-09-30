@@ -1,0 +1,17 @@
+Copyright (c) 2012 THAVIS GmbH & Co. KG
+
+License Agreement
+Terms and Conditions
+
+All copyrights to js360viewer are exclusively owned by the THAVIS GmbH & Co. KG (also remarked as THAVIS).
+The js360viewer software is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties.
+This License is a legal and binding agreement between you and the THAVIS GmbH & Co. KG.
+Using the js360viewer software signifies that you have read, understand and accept the Terms and Conditions of this License Agreement.
+Any unauthorized use of js360viewer shall result in immediate termination of this License and may result in criminal and/or civil prosecution.
+You may not modify, clone, decompile, disassemble, reverse engineer or create derivative works based upon js360viewer.
+You may not rent, lease, lend or sublicense js360viewer. The js360viewer link in the viewer may not be removed, suppressed, altered, disabled or covered in any way without owning the additional js360viewer branding license.
+You are not allowed to re-distribute the 360° viewer in a tool or template. You are not allowed do this with the 360° viewer either on its own or bundled with other items, and even if you modify the 360° viewer. This is not allowed even if the re-distribution is for free. 
+js360viewer is provided "As Is" without warranty of any kind, either express or implied, including any warranty of quality, merchantability, or fitness for a particular purpose.
+In no event will THAVIS be liable for loss of data, costs of procurement of substitute goods or services or any special, consequential or incidental damages, under any cause of action and regardless of whether or not the THAVIS have been advised of the possibility of such damage.
+This limitation will apply notwithstanding any failure of essential purpose of any limited remedy provided herein. In any event the THAVIS will have liability arising out of this agreement.
+All rights not expressly granted here are reserved by the THAVIS GmbH & Co. KG.
