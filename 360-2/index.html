@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="###JS###" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/min.js" charset="UTF-8"></script>
 
-	<link href="###CSS###" rel="stylesheet" type="text/css" />
+	<link href="js/min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -15,22 +15,23 @@
 	<script type="text/javascript">
 		jQuery( document ).ready(function() {
 			jQuery("#js360-widget").thavis360({
-				serverLocation:'###SERVERLOCATION###',
-				objDir:'###OBJDIR###',
-				imgTotal:###IMGTOTAL###,
-				imgStart:###IMGSTART###,
-				features:###FEATURES###,
-				stepping:###STEPPING###,
-				spinInterval:###SPININTERVAL###,
+				serverLocation:'',
+				objDir:'spin',
+				imgTotal:36,
+				imgStart:1,
+				features:false,
+				stepping:10,
+				spinInterval:70,
 				lang:'en',
 				targetSpinInterval:25,
-				spinDirection:'###SPINDIRECTION###',
-				navPosition:'###NAVPOSITION###',
-				zoomMode:'###ZOOMMODE###',
+				spinDirection:'forward',
+				navPosition:'top',
+				zoomMode:'follow',
 				descPosition:'left',
 				hsWidth:32,
 				hsHeight:32,
-				hsFadeInDuration:800
+				hsFadeInDuration:800,
+				autoplay: false
 			});
 		});
 	</script>
