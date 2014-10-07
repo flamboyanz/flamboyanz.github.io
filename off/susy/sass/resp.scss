@@ -1,0 +1,108 @@
+// responsive grid
+// ==============
+
+@import "compass";
+@import "susy";
+
+// dependent gem modules
+@import "compass/css3";
+@import "compass/css3/border-radius";
+@import "breakpoint";
+
+
+// Configuring Susy Defaults
+$susy: (
+        columns: 12,
+        gutters: 1/4,
+        global-box-sizing: border-box,
+        use-custom: (rem: true
+        )
+);
+
+// global resets
+* { @include border-box-sizing; margin: 0; padding: 0; }
+
+/** Susy Grid **/
+
+// The Container Mixin
+.container {
+
+  /* @include container; */ // fluid width 100%
+  //this gives container a max-width of 1024px
+  @include container(1024px);
+  @include clearfix;
+
+}
+
+// Breakpoints
+
+@media (min-width: 1200px) {
+  .container {
+    /* contents */
+  }
+}
+
+.ag1 {
+  // tablet view
+  @include breakpoint(600px) {
+    @include span(2 of 6 last);
+  }
+  // desktop view
+  @include breakpoint(900px) {
+    @include span(2 of 10);
+  }
+}
+
+.ag2 {
+  @include clearfix;
+  background-color: #fae7b3;
+  // tablet view
+  @include breakpoint(600px) {
+    @include span(4 of 6);
+    background-color: #f2f260;
+  }
+  // desktop view
+  @include breakpoint(900px) {
+    @include span(6 of 10);
+    background-color: #ee9e9c;
+  }
+}
+
+.ag3 {
+  // tablet view
+  @include susy-breakpoint(600px, 6) {
+    @include span(2 last);
+  }
+
+  // desktop view
+  @include susy-breakpoint(900px, 10) {
+    @include span(2 last);
+  }
+}
+
+/** Normal Styles **/
+
+.container { background-color: #fbeecb; @include transition(0.5s ease); }
+
+.ag {
+  @include transition(0.5s ease);
+  @include border-radius();
+  margin: 10px 5px;
+  text-align: center;
+}
+
+.ag1{ background-color: #71dad2; }
+.ag2{ /*background-color: #fae7b3;*/ }
+.ag3{ background-color: #ea9fc3; }
+
+/** Text Styles **/
+h3 {
+  font-family: 'Arial';
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: normal;
+  padding-top: 1.8rem;
+  padding-bottom: 1.8rem;
+}
+
+strong{ font: normal 13px 'Arial'; }
