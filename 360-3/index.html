@@ -24,9 +24,35 @@
             target_id:'image_holder_x'
         });
 
-//Lets start the presentation
-        presentation.start();
+//Image loading start
+   $(presentation).on('loadImageStart', function() {
+    $('#message').append('<span>loadImageStart event</span><br>');
+       $( "#progressbar").show();
+     });
+    
+   
+   //Image loading progress
+   $(presentation).on('loadImageProgress', function(e, number, perc) {
+    $('#message').append(' ' + number + ' (' + perc + '%) ');
+        $(function() {
+    $( "#progressbar" ).progressbar({
+      value: perc
     });
+  });
+     });
+    
+  //Image loading end
+   $(presentation).on('loadImageEnd', function() {
+    $('#message').append('<br><span>loadImageEnd event</span><br>');
+        $( "#progressbar").hide();
+     });   
+    
+//Lets start the presentation and clean the log
+    $('#start_presentation').click(function(){
+       presentation.start(); 
+        $('#message').empty();
+       
+    })  
 
 </script>
 </body>
