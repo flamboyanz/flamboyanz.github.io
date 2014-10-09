@@ -49,7 +49,7 @@
 
 //Image loading start
         $(presentation).on('loadImageStart', function () {
-            $('#message').append('<span>Loading %</span><br>');
+            $('#message').append('<span>Loading Starts %</span><br>');
             $("#progressbar").show();
         });
 
@@ -66,7 +66,7 @@
 
         //Image loading end
         $(presentation).on('loadImageEnd', function () {
-            $('#message').append('<br><span>loadImageEnd event</span><br>');
+            $('#message').append('<br><span>loading Complete</span><br>');
             $("#progressbar").hide();
         });
 
