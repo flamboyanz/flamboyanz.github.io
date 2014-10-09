@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--You need JQuery and our script-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://360-javascriptviewer.com/js/jquery.mobile.vmouse.js" type="text/javascript"></script>
+    <script src="http://www.360-javascriptviewer.com/js/javascriptviewer_jso.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<!--Specify an image holder and the main image-->
+<div id="image_holder_x" style="height:300px;">
+    <img id="product_image_x" src="github_repo/flamboyanz.github.io/360-3/images/image.jpg"  >
+</div>
+
+<script>
+    $( document ).ready(function() {
+//Lets create an instance of the viewer
+        var presentation = new javascriptViewer($('#product_image_x'),{
+            total_frames:72,
+            target_id:'image_holder_x'
+        });
+
+//Lets start the presentation
+        presentation.start();
+    });
+
+</script>
+</body>
+</html>
