@@ -5,7 +5,7 @@
     <title></title>
     <style type="text/css">
     .imageholder{
-	    width:350px;
+	    /*width:350px;*/
 	    position:relative;
 	}
 	</style>
@@ -17,22 +17,31 @@
 </head>
 <body>
 
-<a href="#" id="start_presentation">Start Loading</a>
-<div id="progressbar"></div>
-<div id="message"></div>
 
 <!--Specify an image holder and the main image-->
-<div id="image_holder_x" class="imageholder" style="height:300px;">
+<div id="image_holder_x" class="imageholder">
     <img id="product_image_x" src="images/image.jpg"  >
 </div>
 
-<script>
+<div style="clear:both;">
+
+    <a href="#" id="start_presentation">Start Loading</a>
+    <div id="progressbar"></div>
+    <div id="message"></div>
+
+</div>
+
+<script type="text/javascript">
+
     $( document ).ready(function() {
-//Lets create an instance of the viewer
+
+        //Lets create an instance of the viewer
         var presentation = new javascriptViewer($('#product_image_x'), {
             total_frames: 36,
             target_id: 'image_holder_x'
         });
+
+        presentation.start();
 
 //Image loading start
         $(presentation).on('loadImageStart', function () {
@@ -62,9 +71,11 @@
             presentation.start();
             $('#message').empty();
 
-        });
-    };
+        })
+
+    });
 
 </script>
+
 </body>
 </html>
