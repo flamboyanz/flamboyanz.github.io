@@ -27,7 +27,7 @@ section:after {
 #blog-list > div {
   background: orange;
   margin-bottom: 10px;
-  font: normal 13px/2 'Arial';
+  font: normal 14px/2 'Arial';
   padding: 10px 10px;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
