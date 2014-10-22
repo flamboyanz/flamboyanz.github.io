@@ -7,8 +7,6 @@
     <option name="importPaths">
       <list>
         <option value="$USER_HOME$/.rvm/gems/ruby-2.1.3@global/gems/compass-normalize-1.5/lib/../stylesheets" />
-        <option value="$USER_HOME$/.rvm/gems/ruby-2.1.3@global/gems/breakpoint-2.5.0/stylesheets" />
-        <option value="$USER_HOME$/.rvm/gems/ruby-2.1.3@global/gems/sassy-maps-0.4.0/sass" />
         <option value="$USER_HOME$/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.1.0.alpha.3/stylesheets" />
         <option value="$USER_HOME$/.rvm/gems/ruby-2.1.3@global/gems/susy-2.1.3/sass" />
       </list>
