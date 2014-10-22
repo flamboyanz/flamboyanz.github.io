@@ -1,0 +1,74 @@
+/* line 18, ../sass/smart-master.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* line 14, ../../../../../../../Users/pahme2/.rvm/gems/ruby-2.1.3@global/gems/susy-2.1.3/sass/susy/language/susy/_box-sizing.scss */
+* *, * *:before, * *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 22, ../sass/smart-master.scss */
+section {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../Users/pahme2/.rvm/gems/ruby-2.1.3@global/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+section:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 28, ../sass/smart-master.scss */
+#blog-list > div {
+  background: orange;
+  margin-bottom: 10px;
+  font: normal 13px/2 'Arial';
+  padding: 10px 10px;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  height: 100px;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* line 28, ../sass/smart-master.scss */
+  #blog-list > div {
+    width: 49.24242%;
+    float: left;
+    margin-left: 0.37879%;
+    margin-right: 0.37879%;
+    height: 200px;
+    margin-bottom: 0.37879%;
+  }
+  /* line 49, ../sass/smart-master.scss */
+  #blog-list > div:nth-child(5n+1) {
+    width: 99.24242%;
+    float: left;
+    margin-left: 0.37879%;
+    margin-right: 0.37879%;
+  }
+}
+@media (min-width: 1025px) {
+  /* line 28, ../sass/smart-master.scss */
+  #blog-list > div {
+    width: 32.57576%;
+    float: left;
+    margin-left: 0.37879%;
+    margin-right: 0.37879%;
+    margin-bottom: 0.37879%;
+    height: 150px;
+  }
+  /* line 64, ../sass/smart-master.scss */
+  #blog-list > div:nth-child(10n+1), #blog-list > div:nth-child(10n+7) {
+    width: 65.90909%;
+    float: left;
+    margin-left: 0.37879%;
+    margin-right: 0.37879%;
+    background: #a9ce0d;
+  }
+}

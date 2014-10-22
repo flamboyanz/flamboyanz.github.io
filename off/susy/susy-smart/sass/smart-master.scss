@@ -1,0 +1,72 @@
+// Screen
+// ======
+
+// Requirements
+// ============
+
+@import "compass";
+@import "susy";
+
+
+$susy: (
+        columns: 12,
+        gutter-position: split,
+        gutters: 0.1
+);
+
+// neutralize
+*{ @include border-box-sizing; margin: 0; padding: 0; }
+
+
+// Common styles
+section {
+  @include container(1140px);
+}
+
+#blog-list {
+
+  > div {
+
+    background: orange;
+    margin-bottom:10px;
+    font: normal 13px/2 'Arial';
+    padding: 10px 10px;
+
+    // .. Mobile styles for the layout here
+
+    @include transition( all ease 0.5s );
+    height:100px;
+
+    // Tablet Layout Pattern
+
+    @media (min-width: 768px) and (max-width: 1024px){
+
+      @include span(6);
+
+      height: 200px;
+      margin-bottom: gutter();
+
+      &:nth-child(5n+1) {
+        @include span(12);
+      }
+    }
+
+    // Desktop Layout Pattern
+
+    @media (min-width: 1025px) {
+
+      @include span(4);
+
+      margin-bottom: gutter();
+
+      height: 150px;
+
+      &:nth-child(10n+1),
+      &:nth-child(10n+7) {
+
+        @include span(8);
+        background: #a9ce0d;
+      }
+    }
+  }
+}
