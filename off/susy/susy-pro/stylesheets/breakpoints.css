@@ -1,0 +1,77 @@
+/*
+Error: Undefined mixin 'breakpoint'.
+        on line 7 of /Applications/XAMPP/xamppfiles/htdocs/resp_demo/susy-pro/sass/breakpoints.scss, in `breakpoint'
+        from line 7 of /Applications/XAMPP/xamppfiles/htdocs/resp_demo/susy-pro/sass/breakpoints.scss
+
+2: 
+3: .container {
+4:   //@include transition(0.5s ease);
+5: 
+6: 
+7:   @include breakpoint($mobile-size) {
+8:     padding: 10px;
+9:     background-color: #fbeecb;
+10:   }
+11: }
+12: 
+
+Backtrace:
+/Applications/XAMPP/xamppfiles/htdocs/resp_demo/susy-pro/sass/breakpoints.scss:7:in `breakpoint'
+/Applications/XAMPP/xamppfiles/htdocs/resp_demo/susy-pro/sass/breakpoints.scss:7
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:338:in `block in visit_mixin'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:115:in `with_frame'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:98:in `with_mixin'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:79:in `block in with_base'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:115:in `with_frame'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:79:in `with_base'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:420:in `map'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:79:in `block in with_base'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:115:in `with_frame'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/stack.rb:79:in `with_base'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/tree/root_node.rb:20:in `render'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/engine.rb:268:in `render'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/plugin/compiler.rb:491:in `update_stylesheet'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/plugin/compiler.rb:469:in `on_file_changed'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/lib/sass/plugin/compiler.rb:328:in `block in watch'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/listener.rb:252:in `call'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/adapter.rb:254:in `call'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/Users/pahme2/.rvm/gems/ruby-2.1.3/gems/sass-3.4.6/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'breakpoint'.\A         on line 7 of /Applications/XAMPP/xamppfiles/htdocs/resp_demo/susy-pro/sass/breakpoints.scss, in `breakpoint'\A         from line 7 of /Applications/XAMPP/xamppfiles/htdocs/resp_demo/susy-pro/sass/breakpoints.scss\A \A 2: \A 3: .container {\A 4:   //@include transition(0.5s ease);\A 5: \A 6: \A 7:   @include breakpoint($mobile-size) {\A 8:     padding: 10px;\A 9:     background-color: #fbeecb;\A 10:   }\A 11: }\A 12: "; }

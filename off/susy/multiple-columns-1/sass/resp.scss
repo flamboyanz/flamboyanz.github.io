@@ -1,0 +1,116 @@
+// responsive grid
+// ==============
+
+@import "compass";
+@import "susy";
+
+// dependent gem modules
+@import "compass/css3";
+@import "compass/css3/border-radius";
+@import "breakpoint";
+// global resets
+* { @include border-box-sizing; margin: 0; padding: 0; }
+
+// Configuring Susy Defaults
+$susy: (
+        columns: 10,
+        container: 100%,
+        container-position: center,
+        gutters: 1/4,
+        gutter-position: after,
+        debug: (
+                image: show-columns,
+                output: overlay,
+                color: rgba(#66f, .50),
+                toggle: top left,
+        ),
+        global-box-sizing: border-box
+);
+
+/** Susy Grid **/
+
+// The Container Mixin
+.container {
+
+  /* @include container; */ // fluid width 100%
+  //this gives container a max-width of 1024px
+  @include container;
+  @include clearfix;
+  margin-top:0;
+
+}
+
+// Breakpoints
+
+@media (min-width: 1200px) {
+  .container {
+    /* contents */
+  }
+}
+
+.ag1 {
+  // tablet view
+  @include breakpoint(600px) {
+    @include span(3 of 10 last);
+  }
+  // desktop view
+  @include breakpoint(900px) {
+    @include span(2);
+  }
+}
+
+.ag2 {
+  @include clearfix;
+  background-color: #fae7b3;
+  // tablet view
+  @include breakpoint(600px) {
+    @include span(7 of 10);
+    background-color: #f2f260;
+
+  }
+  // desktop view
+  @include breakpoint(900px) {
+    @include span(6 of 10);
+    background-color: #ee9e9c;
+  }
+}
+
+.ag3 {
+  // tablet view
+  @include susy-breakpoint(600px, 6) {
+    @include span(3 of 10 last);
+  }
+
+  // desktop view
+  @include susy-breakpoint(900px, 10) {
+    @include span(2 last);
+  }
+}
+
+/** Normal Styles **/
+
+.container { /*background-color: #fbeecb;*/ @include transition(0.5s ease); }
+
+.ag {
+  //@include transition(0.5s ease);
+  @include border-radius();
+  text-align: center;
+  margin-top: gutter(10px);
+  margin-bottom: gutter(10px);
+}
+
+.ag1{ background-color: #71dad2; }
+.ag2{ /*background-color: #fae7b3;*/ }
+.ag3{ background-color: #ea9fc3; }
+
+/** Text Styles **/
+h3 {
+  font-family: 'Arial';
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: normal;
+  padding-top: 1.8rem;
+  padding-bottom: 1.8rem;
+}
+
+strong{ font: normal 13px 'Arial'; }

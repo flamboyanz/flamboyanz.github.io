@@ -1,0 +1,84 @@
+// ----
+// Sass (v3.4.6)
+// Compass (v1.0.1)
+// Susy (v2.1.3)
+// ----
+@import 'compass';
+@import "susy";
+@import 'commons';
+
+/* Susy Defaults */
+
+$susy: (
+        flow: ltr,
+        output: float,
+        math: fluid,
+        column-width: false,
+        container: 700px,
+        container-position: center,
+        last-flow: to,
+        columns: 12,
+
+);
+
+/* Grid */
+
+.page{
+  @include container;
+}
+
+.content{
+
+  /* Styles for mobile view go here */
+  padding: gutter(10px);
+  padding-top: gutter(20px);
+  padding-bottom: gutter(20px);
+  /* Styles for desktop view go here */
+  @media (min-width: 700px) {
+    @include span(8 first);
+  }
+}
+
+.sidebar{
+
+  /* Styles for mobile view go here */
+  padding: gutter(10px);
+  padding-top: gutter(20px);
+  padding-bottom: gutter(20px);
+
+  /* Styles for desktop view go here */
+  @media (min-width: 700px) {
+    @include span(4 last);
+  }
+}
+
+.social{
+  /*padding: gutter();*/
+  @include clearfix;
+  @include full;
+
+  ul{
+    list-style-type: none;
+    @include clearfix;
+    @include full;
+    padding:0;
+
+    li{
+
+      height:80px;
+      @include gallery(2 of 10);
+      margin-bottom: gutter(10);
+
+      @media (min-width: 700px) {
+        @include gallery(1 of 10);
+        margin-bottom: 0;
+      }
+
+
+      &:last-child{
+        @include last;
+      }
+    }
+  }
+}
+

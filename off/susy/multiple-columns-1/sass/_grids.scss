@@ -1,0 +1,16 @@
+// Requirements
+// ============
+
+@import "compass";
+@import "susy";
+
+// Configuring Susy Defaults
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+  global-box-sizing: border-box,
+  use-custom: (rem: true
+  )
+);
+
+@include border-box-sizing;

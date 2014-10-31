@@ -1,0 +1,142 @@
+// ----
+// Sass (v3.3.10)
+// Compass (v1.0.0.alpha.20)
+// Susy (v2.1.2)
+// ----
+
+@import "susy";
+
+$susy: (
+        flow: rtl,
+
+        output: float,
+
+        math: fluid,
+
+        container: 960px,
+
+        container-position: center,
+
+        columns: 12,
+
+        column-width: false,
+
+        gutters: 0.5,
+
+        gutter-position: before,
+
+        global-box-sizing: border-box,
+
+        last-flow: to,
+
+        debug: (
+                image: show-columns,
+                output: overlay,
+                color: rgba(#66f, .50),
+                toggle: top right,
+        ),
+);
+
+.content {
+  div {
+    @include gallery(4);
+  }
+}
+
+/**** Normal Styles ****/
+
+body {
+  font-family: helvetica;
+}
+
+header {
+  height: 150px;
+  background: #2F94B2;
+  margin-bottom: 10px;
+  h1 {
+    margin: 10px;
+    font-weight: normal;
+    font-size: 100%;
+    text-align: center;
+  }
+}
+
+.hero {
+  height: 100px;
+  margin-bottom: 10px;
+  h3, h2 {
+    margin: 10px;
+    font-size: 90%;
+    font-weight: normal;
+  }
+  .one {
+    background: #FF739C;
+    height: 100%;
+  }
+  .two {
+    height: 100%;
+    div {
+      height: 100%;
+      background: #CCC136;
+    }
+  }
+}
+
+.content {
+  h3 {
+    margin: 10px;
+    font-weight: normal;
+    font-size: 90%;
+  }
+
+  div {
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  div:nth-child(3n) {
+    background: #2F94B2;
+  }
+  div:nth-child(3n+1) {
+    background: #FF7311;
+  }
+  div:nth-child(3n+2) {
+    background: #5DD9FF;
+  }
+}
+
+////  GRID
+
+.page {
+  @include container;
+}
+
+header {
+  @include full;
+}
+
+.hero {
+  clear: both;
+  .one {
+    @include span(first 4);
+  }
+  .two {
+    @include span(last 8  nest);
+    div:nth-child(4n+1) {
+      clear: both;
+      @include span(2 at 1 of 8);
+    }
+    div:nth-child(4n+2) {
+      @include span(2 at 3 of 8);
+    }
+    div:nth-child(4n+3) {
+      @include span(2 at 5 of 8);
+    }
+    div:nth-child(4n) {
+      @include span(last 2 of 8);
+    }
+    div:nth-child(4) {
+      @include span(last 2 of 8);
+    }
+  }
+}

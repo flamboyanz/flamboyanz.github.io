@@ -1,0 +1,57 @@
+// requirements
+// ==============
+
+// import dependencies
+@import "compass";
+@import "susy";
+
+
+// other module dependencies
+@import "compass/css3";
+@import "compass/css3/border-radius";
+@import "breakpoint";
+
+// import global resets
+@import "normalize";
+
+* { @include border-box-sizing; margin: 0; padding: 0; }
+
+
+
+
+// Configuring Susy Defaults
+$susy: (
+        columns: 12,
+        gutters: 1/4,
+        gutter-override: no-gutters,
+        global-box-sizing: border-box,
+        box-sizing: border-box,
+        use-custom: (rem: true
+        )
+);
+
+
+/** Susy Grid **/
+
+// The Container Mixin
+.container {
+
+  /* @include container; */ //fluid width 100% //this gives container a max-width of 1024px
+
+  @include container(1024px);
+  @include clearfix;
+
+}
+
+// Susy accepts px, em and rem for the magic and fixed grid, and % for the fluid grid
+$total-columns: 10;
+$column-width: 4rem;
+$gutter-width: 1rem;
+$grid-padding: $gutter-width / 2;
+
+$mobile-size: 600px;
+$tablet-size: 900px;
+$desktop-size: 1200px;
+
+// import breakpoints
+@import "breakpoints";
