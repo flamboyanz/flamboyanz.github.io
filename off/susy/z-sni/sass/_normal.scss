@@ -1,0 +1,92 @@
+/*
+.content div, .content section{
+  @include transition( all ease 0.5s );
+}
+*/
+
+body{ font: normal 13px 'Arial' }
+.content > section, .content > div, header, footer {  }
+
+h1, h2, h3, h4, h5, h6{ font: normal 13px 'Arial'; margin:0; }
+
+.container{
+  /*background: yellow;*/
+
+  header{
+    background: #E8F3F8;
+
+    h3{
+      font: normal 14px/3 'Arial';
+      text-align: center;
+    }
+  }
+
+  .content{
+
+    section.topbar{
+      background: #DBE6EC;
+
+      .page-title{
+        background: #DBE6EC;
+        font: normal 14px/2em 'Arial';
+        text-align: center;
+      }
+      .back{
+        background: #C2CBCE;
+        font: normal 12px/2.5em 'Arial';
+        text-indent: 20px;
+
+      }
+    }
+
+    .hero-area{
+      background: #EFEFD6;
+
+      .title{
+        background: #FFE181;
+        text-indent: 20px;
+      }
+
+      .front-back-2{
+        background: #F38630;
+        border: 3px dashed #000;
+      }
+
+      .pricing{
+        background: #EEE9E5;
+
+        .price{ background: #A8DBA8; }
+        .mpg{ background: #A8DBA8; }
+        .match{ background: #A8DBA8; }
+
+      }
+
+      .hero-img{
+        background: transparent;
+      }
+
+      .front-back{
+        background: #F38630;
+
+      }
+
+    }
+
+    section.data{
+      background: yellow;
+      .vin-num{}
+      .sticker{}
+      .buy-lease{ background: #FAD3B2; }
+      .get-quote{ background: #FFBA7F; }
+    }
+
+    section.dealer-lot{ background: #F2F0DF; }
+    section.categories{ background: #A9C1D9; }
+    section.accordion{ background: #607890; }
+
+  }
+
+  footer{ background: #3A89C9; }
+
+
+}
