@@ -1,15 +1,4 @@
-/*
- * blueimp helper JS 1.2.0
- * https://github.com/blueimp/Gallery
- *
- * Copyright 2013, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
 
-/* global define, window, document */
 
 (function () {
     'use strict';
@@ -185,7 +174,7 @@
             return Helper;
         });
     } else {
-        window.blueimp = window.blueimp || {};
-        window.blueimp.helper = Helper;
+        window.xbmod = window.xbmod || {};
+        window.xbmod.helper = Helper;
     }
 }());

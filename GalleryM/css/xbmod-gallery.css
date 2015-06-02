@@ -1,17 +1,17 @@
 @charset "UTF-8";
 /*
- * blueimp Gallery CSS 2.11.1
- * https://github.com/blueimp/Gallery
+ * xbmod Gallery CSS 2.11.1
+ * https://github.com/xbmod/Gallery
  *
  * Copyright 2013, Sebastian Tschan
- * https://blueimp.net
+ * https://xbmod.net
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
 
-.blueimp-gallery,
-.blueimp-gallery > .slides > .slide > .slide-content {
+.xbmod-gallery,
+.xbmod-gallery > .slides > .slide > .slide-content {
   position: absolute;
   top: 0;
   right: 0;
@@ -20,7 +20,7 @@
   /* Prevent artifacts in Mozilla Firefox: */
   -moz-backface-visibility: hidden;
 }
-.blueimp-gallery > .slides > .slide > .slide-content {
+.xbmod-gallery > .slides > .slide > .slide-content {
   margin: auto;
   width: auto;
   height: auto;
@@ -28,7 +28,7 @@
   max-height: 100%;
   opacity: 1;
 }
-.blueimp-gallery {
+.xbmod-gallery {
   position: fixed;
   z-index: 999999;
   overflow: hidden;
@@ -40,7 +40,7 @@
   -ms-touch-action: none;
   touch-action: none;
 }
-.blueimp-gallery-carousel {
+.xbmod-gallery-carousel {
   position: relative;
   z-index: auto;
   margin: 1em auto;
@@ -50,19 +50,19 @@
   -ms-touch-action: pan-y;
   touch-action: pan-y;
 }
-.blueimp-gallery-display {
+.xbmod-gallery-display {
   display: block;
   opacity: 1;
 }
-.blueimp-gallery > .slides {
+.xbmod-gallery > .slides {
   position: relative;
   height: 100%;
   overflow: hidden;
 }
-.blueimp-gallery-carousel > .slides {
+.xbmod-gallery-carousel > .slides {
   position: absolute;
 }
-.blueimp-gallery > .slides > .slide {
+.xbmod-gallery > .slides > .slide {
   position: relative;
   float: left;
   height: 100%;
@@ -73,29 +73,29 @@
        -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
           transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
-.blueimp-gallery,
-.blueimp-gallery > .slides > .slide > .slide-content {
+.xbmod-gallery,
+.xbmod-gallery > .slides > .slide > .slide-content {
   -webkit-transition: opacity 0.5s linear;
      -moz-transition: opacity 0.5s linear;
       -ms-transition: opacity 0.5s linear;
        -o-transition: opacity 0.5s linear;
           transition: opacity 0.5s linear;
 }
-.blueimp-gallery > .slides > .slide-loading {
+.xbmod-gallery > .slides > .slide-loading {
   background: url(../img/loading.gif) center no-repeat;
   background-size: 64px 64px;
 }
-.blueimp-gallery > .slides > .slide-loading > .slide-content {
+.xbmod-gallery > .slides > .slide-loading > .slide-content {
   opacity: 0;
 }
-.blueimp-gallery > .slides > .slide-error {
+.xbmod-gallery > .slides > .slide-error {
   background: url(../img/error.png) center no-repeat;
 }
-.blueimp-gallery > .slides > .slide-error > .slide-content {
+.xbmod-gallery > .slides > .slide-error > .slide-content {
   display: none;
 }
-.blueimp-gallery > .prev,
-.blueimp-gallery > .next {
+.xbmod-gallery > .prev,
+.xbmod-gallery > .next {
   position: absolute;
   top: 50%;
   left: 15px;
@@ -123,12 +123,12 @@
   cursor: pointer;
   display: none;
 }
-.blueimp-gallery > .next {
+.xbmod-gallery > .next {
   left: auto;
   right: 15px;
 }
-.blueimp-gallery > .close,
-.blueimp-gallery > .title {
+.xbmod-gallery > .close,
+.xbmod-gallery > .title {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -140,7 +140,7 @@
   opacity: 0.8;
   display: none;
 }
-.blueimp-gallery > .close {
+.xbmod-gallery > .close {
   padding: 15px;
   right: 15px;
   left: auto;
@@ -149,7 +149,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-.blueimp-gallery > .play-pause {
+.xbmod-gallery > .play-pause {
   position: absolute;
   right: 15px;
   bottom: 15px;
@@ -160,22 +160,22 @@
   opacity: 0.5;
   display: none;
 }
-.blueimp-gallery-playing > .play-pause {
+.xbmod-gallery-playing > .play-pause {
   background-position: -15px 0;
 }
-.blueimp-gallery > .prev:hover,
-.blueimp-gallery > .next:hover,
-.blueimp-gallery > .close:hover,
-.blueimp-gallery > .title:hover,
-.blueimp-gallery > .play-pause:hover {
+.xbmod-gallery > .prev:hover,
+.xbmod-gallery > .next:hover,
+.xbmod-gallery > .close:hover,
+.xbmod-gallery > .title:hover,
+.xbmod-gallery > .play-pause:hover {
   color: #fff;
   opacity: 1;
 }
-.blueimp-gallery-controls > .prev,
-.blueimp-gallery-controls > .next,
-.blueimp-gallery-controls > .close,
-.blueimp-gallery-controls > .title,
-.blueimp-gallery-controls > .play-pause {
+.xbmod-gallery-controls > .prev,
+.xbmod-gallery-controls > .next,
+.xbmod-gallery-controls > .close,
+.xbmod-gallery-controls > .title,
+.xbmod-gallery-controls > .play-pause {
   display: block;
   /* Fix z-index issues (controls behind slide element) on Android: */
   -webkit-transform: translateZ(0);
@@ -184,18 +184,18 @@
        -o-transform: translateZ(0);
           transform: translateZ(0);
 }
-.blueimp-gallery-single > .prev,
-.blueimp-gallery-left > .prev,
-.blueimp-gallery-single > .next,
-.blueimp-gallery-right > .next,
-.blueimp-gallery-single > .play-pause {
+.xbmod-gallery-single > .prev,
+.xbmod-gallery-left > .prev,
+.xbmod-gallery-single > .next,
+.xbmod-gallery-right > .next,
+.xbmod-gallery-single > .play-pause {
   display: none;
 }
-.blueimp-gallery > .slides > .slide > .slide-content,
-.blueimp-gallery > .prev,
-.blueimp-gallery > .next,
-.blueimp-gallery > .close,
-.blueimp-gallery > .play-pause {
+.xbmod-gallery > .slides > .slide > .slide-content,
+.xbmod-gallery > .prev,
+.xbmod-gallery > .next,
+.xbmod-gallery > .close,
+.xbmod-gallery > .play-pause {
   -webkit-user-select: none;
    -khtml-user-select: none;
      -moz-user-select: none;
@@ -204,23 +204,23 @@
 }
 
 /* Replace PNGs with SVGs for capable browsers (excluding IE<9) */
-body:last-child .blueimp-gallery > .slides > .slide-error {
+body:last-child .xbmod-gallery > .slides > .slide-error {
   background-image: url(../img/error.svg);
 }
-body:last-child .blueimp-gallery > .play-pause {
+body:last-child .xbmod-gallery > .play-pause {
   width: 20px;
   height: 20px;
   background-size: 40px 20px;
   background-image: url(../img/play-pause.svg);
 }
-body:last-child .blueimp-gallery-playing > .play-pause {
+body:last-child .xbmod-gallery-playing > .play-pause {
   background-position: -20px 0;
 }
 
 /* IE7 fixes */
-*+html .blueimp-gallery > .slides > .slide {
+*+html .xbmod-gallery > .slides > .slide {
   min-height: 300px;
 }
-*+html .blueimp-gallery > .slides > .slide > .slide-content {
+*+html .xbmod-gallery > .slides > .slide > .slide-content {
   position: relative;
 }

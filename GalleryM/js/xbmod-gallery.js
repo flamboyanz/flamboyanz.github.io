@@ -1,9 +1,9 @@
 /*
- * blueimp Gallery JS 2.14.1
- * https://github.com/blueimp/Gallery
+ * xbmod Gallery JS 2.14.1
+ * https://github.com/xbmod/Gallery
  *
  * Copyright 2013, Sebastian Tschan
- * https://blueimp.net
+ * https://xbmod.net
  *
  * Swipe implementation based on
  * https://github.com/bradbirdsall/Swipe
@@ -18,12 +18,12 @@
     'use strict';
     if (typeof define === 'function' && define.amd) {
         // Register as an anonymous AMD module:
-        define(['./blueimp-helper'], factory);
+        define(['./xbmod-helper'], factory);
     } else {
         // Browser globals:
-        window.blueimp = window.blueimp || {};
-        window.blueimp.Gallery = factory(
-            window.blueimp.helper || window.jQuery
+        window.xbmod = window.xbmod || {};
+        window.xbmod.Gallery = factory(
+            window.xbmod.helper || window.jQuery
         );
     }
 }(function ($) {
@@ -41,7 +41,7 @@
         }
         if (!list || !list.length) {
             this.console.log(
-                'blueimp Gallery: No or empty list provided as first argument.',
+                'xbmod Gallery: No or empty list provided as first argument.',
                 list
             );
             return;
@@ -56,23 +56,23 @@
 
         options: {
             // The Id, element or querySelector of the gallery widget:
-            container: '#blueimp-gallery',
+            container: '#xbmod-gallery',
             // The tag name, Id, element or querySelector of the slides container:
             slidesContainer: 'div',
             // The tag name, Id, element or querySelector of the title element:
             titleElement: 'h3',
             // The class to add when the gallery is visible:
-            displayClass: 'blueimp-gallery-display',
+            displayClass: 'xbmod-gallery-display',
             // The class to add when the gallery controls are visible:
-            controlsClass: 'blueimp-gallery-controls',
+            controlsClass: 'xbmod-gallery-controls',
             // The class to add when the gallery only displays one element:
-            singleClass: 'blueimp-gallery-single',
+            singleClass: 'xbmod-gallery-single',
             // The class to add when the left edge has been reached:
-            leftEdgeClass: 'blueimp-gallery-left',
+            leftEdgeClass: 'xbmod-gallery-left',
             // The class to add when the right edge has been reached:
-            rightEdgeClass: 'blueimp-gallery-right',
+            rightEdgeClass: 'xbmod-gallery-right',
             // The class to add when the automatic slideshow is active:
-            playingClass: 'blueimp-gallery-playing',
+            playingClass: 'xbmod-gallery-playing',
             // The class for all slides:
             slideClass: 'slide',
             // The slide class for loading elements:
@@ -191,7 +191,7 @@
             closeOnSlideClick: false,
             closeOnSwipeUpOrDown: false,
             disableScroll: false,
-            startSlideshow: true
+            startSlideshow: false
         },
 
         console: window.console && typeof window.console.log === 'function' ?
@@ -296,6 +296,7 @@
         },
 
         slide: function (to, speed) {
+
             window.clearTimeout(this.timeout);
             var index = this.index,
                 direction,
@@ -487,6 +488,7 @@
         },
 
         translate: function (index, x, y, speed) {
+
             var style = this.slides[index].style,
                 transition = this.support.transition,
                 transform = this.support.transform;
@@ -713,6 +715,7 @@
                             indexForward < this.num) {
                         this.move(indexForward, distanceForward, 0);
                     }
+                    console.log('KKKKKK')
                     this.move(index, this.positions[index] + distanceForward, speed);
                     this.move(
                         this.circle(indexBackward),
@@ -1270,7 +1273,7 @@
             this.container = $(this.options.container);
             if (!this.container.length) {
                 this.console.log(
-                    'blueimp Gallery: Widget container not found.',
+                    'xbmod Gallery: Widget container not found.',
                     this.options.container
                 );
                 return false;
@@ -1280,7 +1283,7 @@
             ).first();
             if (!this.slidesContainer.length) {
                 this.console.log(
-                    'blueimp Gallery: Slides container not found.',
+                    'xbmod Gallery: Slides container not found.',
                     this.options.slidesContainer
                 );
                 return false;

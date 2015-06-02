@@ -931,8 +931,8 @@ You can also use the individual source files instead of the standalone minified 
 <link rel="stylesheet" href="css/blueimp-gallery-indicator.css">
 <link rel="stylesheet" href="css/blueimp-gallery-video.css">
 <!-- ... -->
-<script src="js/blueimp-helper.js"></script>
-<script src="js/blueimp-gallery.js"></script>
+<script src="js/xbmod-helper.js"></script>
+<script src="js/xbmod-gallery.js"></script>
 <script src="js/blueimp-gallery-fullscreen.js"></script>
 <script src="js/blueimp-gallery-indicator.js"></script>
 <script src="js/blueimp-gallery-video.js"></script>
@@ -947,13 +947,13 @@ The [jQuery plugin](#jquery-plugin) requires [jQuery](https://jquery.com/) v. 1.
 
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/blueimp-gallery.js"></script>
+<script src="js/xbmod-gallery.js"></script>
 <script src="js/blueimp-gallery-fullscreen.js"></script>
 <script src="js/blueimp-gallery-indicator.js"></script>
 <script src="js/blueimp-gallery-video.js"></script>
 <script src="js/blueimp-gallery-youtube.js"></script>
 <script src="js/blueimp-gallery-vimeo.js"></script>
-<script src="js/jquery.blueimp-gallery.js"></script>
+<script src="js/jquery.xbmod-gallery.js"></script>
 ```
 
 Please note that the jQuery plugin is an optional extension and not required for the Gallery functionality.
