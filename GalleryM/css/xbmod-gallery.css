@@ -1,14 +1,4 @@
-@charset "UTF-8";
-/*
- * xbmod Gallery CSS 2.11.1
- * https://github.com/xbmod/Gallery
- *
- * Copyright 2013, Sebastian Tschan
- * https://xbmod.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
+
 
 .xbmod-gallery,
 .xbmod-gallery > .slides > .slide > .slide-content {
@@ -67,10 +57,10 @@
   float: left;
   height: 100%;
   text-align: center;
-  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
-     -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
-      -ms-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
-       -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+     -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      -ms-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+       -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
           transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 .xbmod-gallery,
