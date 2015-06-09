@@ -1,0 +1,490 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
+}
+
+
+a {
+  text-decoration: none;
+  outline: none !important;
+}
+
+html {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 11px;
+  line-height: 17px;
+  color: #0e0e0e;
+  height: 100%;
+  width: 100%;
+  background-color: #b2b2b2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+
+i { font-style: italic !important; }
+b { font-weight: bold !important; }
+
+
+
+
+
+/* Fonts */
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+Imaging with any questions regarding Web Fonts:  http://webfonts.fonts.com
+*/
+@font-face{
+	font-family:"AvenirNextLTW01-Regular";
+	src:url("/css/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix");
+	src:url("/css/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix") format("eot"),
+	url("/css/fonts/2cd55546-ec00-4af9-aeca-4a3cd186da53.woff2") format("woff2"),
+	url("/css/fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff"),
+	url("/css/fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"),
+	url("/css/fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg");
+}
+@font-face{
+	font-family:"Avenir Next LT W01 Demi";
+	src:url("/css/fonts/12d643f2-3899-49d5-a85b-ff430f5fad15.eot?#iefix");
+	src:url("/css/fonts/12d643f2-3899-49d5-a85b-ff430f5fad15.eot?#iefix") format("eot"),
+	url("/css/fonts/aad99a1f-7917-4dd6-bbb5-b07cedbff64f.woff2") format("woff2"),
+	url("/css/fonts/91b50bbb-9aa1-4d54-9159-ec6f19d14a7c.woff") format("woff"),
+	url("/css/fonts/a0f4c2f9-8a42-4786-ad00-fce42b57b148.ttf") format("truetype"),
+	url("/css/fonts/99affa9a-a5e9-4559-bd07-20cf0071852d.svg#99affa9a-a5e9-4559-bd07-20cf0071852d") format("svg");
+}
+@font-face{
+	font-family:"Avenir Next LT W01 Bold";
+	src:url("/css/fonts/dccb10af-07a2-404c-bfc7-7750e2716bc1.eot?#iefix");
+	src:url("/css/fonts/dccb10af-07a2-404c-bfc7-7750e2716bc1.eot?#iefix") format("eot"),
+	url("/css/fonts/14c73713-e4df-4dba-933b-057feeac8dd1.woff2") format("woff2"),
+	url("/css/fonts/b8e906a1-f5e8-4bf1-8e80-82c646ca4d5f.woff") format("woff"),
+	url("/css/fonts/890bd988-5306-43ff-bd4b-922bc5ebdeb4.ttf") format("truetype"),
+	url("/css/fonts/ed104d8c-7f39-4e8b-90a9-4076be06b857.svg#ed104d8c-7f39-4e8b-90a9-4076be06b857") format("svg");
+}
+@font-face{
+	font-family:"AvenirNextRoundedW01-Re";
+	src:url("/css/fonts/c61fbc93-c8bb-4452-a425-616f4a986a1a.eot?#iefix");
+	src:url("/css/fonts/c61fbc93-c8bb-4452-a425-616f4a986a1a.eot?#iefix") format("eot"),
+	url("/css/fonts/188b58ca-5489-4e70-8010-7b867980f487.woff2") format("woff2"),
+	url("/css/fonts/832e487e-ca07-48d9-b664-9f641d3fd51b.woff") format("woff"),
+	url("/css/fonts/ef1f3005-b51b-4ee4-bd7d-c4d750fd2f0a.ttf") format("truetype"),
+	url("/css/fonts/e5abc466-efd1-4ef7-9bc3-0ad024a38f8b.svg#e5abc466-efd1-4ef7-9bc3-0ad024a38f8b") format("svg");
+}
+@font-face{
+	font-family:"AvenirNextRoundedW01-Md1075562";
+	src:url("/css/fonts/24bb7030-aa2b-4728-8c50-0d5a19597835.eot?#iefix");
+	src:url("/css/fonts/24bb7030-aa2b-4728-8c50-0d5a19597835.eot?#iefix") format("eot"),
+	url("/css/fonts/5559fceb-87c2-4a44-9925-ad308acec971.woff2") format("woff2"),
+	url("/css/fonts/c4f4af3e-b5b8-4fb3-b707-670bbc765c69.woff") format("woff"),
+	url("/css/fonts/58765556-0682-4c0d-a380-ddc721268253.ttf") format("truetype"),
+	url("/css/fonts/5ba56fed-120b-437e-b74b-fdb7563b5f1b.svg#5ba56fed-120b-437e-b74b-fdb7563b5f1b") format("svg");
+}
+@font-face{
+	font-family:"AvenirNextRoundedW01-De1075568";
+	src:url("/css/fonts/cd6aeb84-ef25-4d28-b102-37eb26568e30.eot?#iefix");
+	src:url("/css/fonts/cd6aeb84-ef25-4d28-b102-37eb26568e30.eot?#iefix") format("eot"),
+	url("/css/fonts/a0a87e49-3806-4285-adb4-3d8c713e526c.woff2") format("woff2"),
+	url("/css/fonts/bfaf76ed-3cdf-4258-8336-eb4e18cbd68b.woff") format("woff"),
+	url("/css/fonts/68ebb896-409e-4046-9a76-1a0a59b0ef93.ttf") format("truetype"),
+	url("/css/fonts/4c31487a-bf33-4f62-9c50-602fbf4699bf.svg#4c31487a-bf33-4f62-9c50-602fbf4699bf") format("svg");
+}
+@font-face{
+	font-family:"AvenirNextRoundedW01-Bo1075574";
+	src:url("/css/fonts/da5b695f-ece6-459a-87a6-afa095789070.eot?#iefix");
+	src:url("/css/fonts/da5b695f-ece6-459a-87a6-afa095789070.eot?#iefix") format("eot"),
+	url("/css/fonts/ad3c6c4a-3054-4bcc-b0de-596d767c68be.woff2") format("woff2"),
+	url("/css/fonts/84f3e44b-61b2-4b2c-b0fd-e8044b9908e6.woff") format("woff"),
+	url("/css/fonts/c1fbefa9-1480-4d86-abab-8f357f4a7962.ttf") format("truetype"),
+	url("/css/fonts/74731d73-f46b-4e5d-8c95-a9f87a1ebb58.svg#74731d73-f46b-4e5d-8c95-a9f87a1ebb58") format("svg");
+}
+
+
+
+
+
+/* Avenir Rounded */
+.avenir-demi {font-family:'AvenirNextRoundedW01-De1075568', arial, sans-serif;}
+.avenir-reg {font-family:'AvenirNextRoundedW01-Re', arial, sans-serif;}
+.avenir-med {font-family:'AvenirNextRoundedW01-Md1075562', arial, sans-serif;}
+.avenir-bld {font-family:'AvenirNextRoundedW01-Bo1075574', arial, sans-serif;}
+
+.avenir-med i { font-family:'AvenirNextRoundedW01-Md1075562', arial, sans-serif; }
+.avenir-reg b { font-family:'AvenirNextRoundedW01-Bo1075574', arial, sans-serif; }
+.avenir-med b { font-family:'AvenirNextRoundedW01-Bo1075574', arial, sans-serif; }
+
+
+
+
+.globalSpriteSheet { background-image: url(/mobile/images/_global/header/sprite2x.png?v1); background-repeat: no-repeat; background-size: 240px 284px; }
+
+	/* Header */
+	.globalSpriteSheet.hMark { background-position: -190px 0; width: 47px; height: 29px; }
+	.globalSpriteSheet.menuOff { background-position: 0 0; width: 47px; height: 45px; }
+	.globalSpriteSheet.menuOn { background-position: -52px 0; width: 47px; height: 45px; }
+	.globalSpriteSheet.dealers { background-position: -106px 0; width: 79px; height: 29px; }
+	
+	/* Arrows */
+	.globalSpriteSheet.whiteRightArrow1 { background-position: 0 -52px; width: 11px; height: 20px; }
+	.globalSpriteSheet.blackRightArrow1 { background-position: -71px -52px; width: 8px; height: 20px; }
+	.globalSpriteSheet.blackLeftArrow1 { background-position: -134px -52px; width: 8px; height: 20px; }
+	.globalSpriteSheet.greyRightArrow1 { background-position: -69px -52px; width: 11px; height: 20px; }
+	.globalSpriteSheet.whiteLeftArrow2 { background-position: -226px -192px; width: 10px; height: 19px; }
+	.globalSpriteSheet.whiteRightArrow2 { background-position: -226px -167px; width: 10px; height: 19px; }
+	
+
+	/* Shopping Tools */
+	.globalSpriteSheet.buildIcon1 { background-position: 0 -77px; width: 27px; height: 21px; }
+	.globalSpriteSheet.dealerIcon1 { background-position: -25px -76px; width: 27px; height: 25px; }
+	.globalSpriteSheet.offersIcon1 { background-position: -51px -77px; width: 27px; height: 21px; }
+	.globalSpriteSheet.estimateIcon1 { background-position: -79px -77px; width: 27px; height: 22px; }
+	.globalSpriteSheet.quoteIcon1 { background-position: -107px -77px; width: 27px; height: 22px; }
+	.globalSpriteSheet.compareIcon1 { background-position: -134px -76px; width: 27px; height: 13px; }
+	.globalSpriteSheet.buildIcon2 { background-position: 0 -251px; width: 27px; height: 21px; }
+	.globalSpriteSheet.dealerIcon2 { background-position: -26px -251px; width: 26px; height: 24px; }
+	.globalSpriteSheet.offersIcon2 { background-position: -51px -251px; width: 27px; height: 21px; }
+	.globalSpriteSheet.estimateIcon2 { background-position: -79px -252px; width: 27px; height: 22px; }
+	.globalSpriteSheet.quoteIcon2 { background-position: -107px -251px; width: 27px; height: 23px; }
+	.globalSpriteSheet.compareIcon2 { background-position: -134px -250px; width: 27px; height: 13px; }
+	
+	/* Footer */
+	.globalSpriteSheet.facebookIcon { background-position: 0 -106px; width: 24px; height: 24px; }
+	.globalSpriteSheet.twitterIcon { background-position: -31px -108px; width: 24px; height: 21px; }
+	.globalSpriteSheet.tumblrIcon { background-position: -66px -108px; width: 14px; height: 22px; }
+	.globalSpriteSheet.youtubeIcon { background-position: -91px -108px; width: 24px; height: 19px; }
+	.globalSpriteSheet.linkedinIcon { background-position: -123px -107px; width: 20px; height: 20px; }
+	.globalSpriteSheet.instagramIcon { background-position: -151px -103px; width: 25px; height: 25px; }
+	.globalSpriteSheet.vineIcon { background-position: -186px -110px; width: 19px; height: 22px; }
+	.globalSpriteSheet.googlePlusIcon { background-position: -211px -109px; width: 25px; height: 23px; }
+	.globalSpriteSheet.pinterestIcon { background-position: -1px -135px; width: 19px; height: 25px; }
+	.globalSpriteSheet.hMarkFooter { background-position: -171px -36px; width: 67px; height: 42px; }
+	.globalSpriteSheet.emailIcon { background-position: -190px -83px; width: 27px; height: 19px; }
+
+	/* Icons */
+	.globalSpriteSheet.bluePlus1 { background-position: -18px -51px; width: 20px; height: 20px; }
+	.globalSpriteSheet.blueMinus1 { background-position: -43px -51px; width: 20px; height: 20px; }
+	.globalSpriteSheet.greyPlus1 { background-position: -84px -51px; width: 20px; height: 20px; }
+	.globalSpriteSheet.greyMinus1 { background-position: -107px -51px; width: 20px; height: 20px; }
+	.globalSpriteSheet.fullScreenIcon { background-position: -24px -137px; width: 21px; height: 24px; }
+	.globalSpriteSheet.fullScreenIconClose { background-position: -137px -142px; width: 18px; height: 17px; }
+	.globalSpriteSheet.rotateLeftIcon { background-position: -55px -138px; width: 35px; height: 27px; }
+	.globalSpriteSheet.rotateRightIcon { background-position: -98px -138px; width: 35px; height: 27px; }
+    .globalSpriteSheet.globalPhone { background-position: -182px -139px; width: 20px; height: 20px; display:inline-block;}
+    .globalSpriteSheet.globalPhone-white { background-position: -160px -139px; width: 20px; height: 20px; display:inline-block;}
+    .globalSpriteSheet.globalMap { background-position: -206px -136px; width: 27px; height: 20px; display:inline-block;}
+    .globalSpriteSheet.langugeToggleEnglish { background-position: 0 -166px; width: 218px; height: 38px; display:inline-block;}
+    .globalSpriteSheet.langugeToggleSpanish { background-position: 0 -208px; width: 218px; height: 38px; display:inline-block;}
+
+
+
+/* Header */
+header { background-color: #0080c5; height: 45px; width: 100%; position: fixed; z-index: 99999; }
+	header .headerLogoContainer { width: 100%; height: 21px; padding: 8px 0 0 0; }
+		header .headerLogoContainer .headerLogo { display: block; margin: 0 auto; }
+	header .headerMenu { position: absolute; left: 0; top: 0; display: block; cursor: pointer; }
+	header .headerDealers { position: absolute; right: 11px; top: 7px; display: block; cursor: pointer; }
+	
+#headerSpacer { background-color: #0080c5; height: 45px; width: 100%; }
+	
+navigation { position: absolute; width: 100%; left: 0; top: 45px; display: none; z-index: 99990; }
+	navigation ul { background-color: #ffffff; }
+		/*navigation ul li { height: 34px; background-color: #006ca6; font-size: 22px; padding: 15px 20px 0 24px; border-top: 1px solid #ffffff; }
+			navigation ul li a { color: #ffffff; display: block; }
+				navigation ul li a span:nth-child(1) { float: left; }
+				navigation ul li a span:nth-child(2) { float: right; text-align: right; }*/
+			
+        navigation ul li { min-height: 49px; padding: 0; margin: 0; background-color: #006ca6; width: 100%; border-top: 1px solid #ffffff; }
+            navigation ul li span.outer { height: 34px; width: 100%; display: block; padding-top: 15px; }
+				navigation ul li span.innerL { margin-left: 12px; float: left; }
+				navigation ul li span.innerR { float: right; margin-right: 11px; }
+                navigation ul li a { color: #ffffff; font-size: 22px; text-decoration: none; display: block; }
+                    navigation ul li a:visited { color: #ffffff; }
+                    navigation ul li a:hover { color: #ffffff; }
+                    navigation ul li a:active { background-color: #0080c5; }
+		            navigation ul li a:focus { background-color: #0080c5; }
+		            
+		navigation ul li.menuShoppingToolsSubmenu { display: none; background-color: #eaeaea;  }
+			navigation ul li.menuShoppingToolsSubmenu a { color: #191919; display: block; text-decoration: none; }
+
+
+	navigation #languageMenuSpanishItem { display: none; }
+	navigation #languageMenuEnglishItem { display: none; }
+
+			
+	navigation #navigationScreen { display: none; opacity: 0.7; background-color: #000000; height: 0px; }
+	
+	navigation .globalMenuDisclaimers { background-color: #353535; padding: 16px 8% 25px 8%; font-size: 13px; color: #909090; }
+		navigation .globalMenuDisclaimers p.disclaimersTitle { text-align: center; margin: 16px 0 16px 0; font-size: 12px; color: #909090; }
+		navigation .globalMenuDisclaimers div.disclaimers { text-align: left; margin: 16px 0 16px 0; font-size: 12px; color: #909090; }
+			navigation .globalMenuDisclaimers div.disclaimers p { text-align: left; margin: 16px 0 16px 0; font-size: 12px; color: #909090; line-height: 15px; }
+
+	
+
+/* Language Toggle */
+#languageToggle { width: 100%; height: 38px; background-color: #dcddd8; text-align: center; padding: 10px 0 10px 0; display: none; }
+    #languageToggle #languageToggleEnglish { position: relative; margin: 0 auto; display: none; }
+        #languageToggle #languageToggleEnglish div.link { position: absolute; left: 118px; top: 0; width: 100px; height: 38px; }
+            #languageToggle #languageToggleEnglish div.link a { display: block; width: 100px; height: 38px; }
+    #languageToggle #languageToggleSpanish { position: relative; margin: 0 auto; display: none; }
+        #languageToggle #languageToggleSpanish div.link { position: absolute; left: 0; top: 0; width: 100px; height: 38px; }
+            #languageToggle #languageToggleSpanish div.link a { display: block; width: 100px; height: 38px; }
+
+
+
+/* Global Shopping Tools Menu */
+#globalShoppingTools { min-height: 49px; padding: 0; margin: 0; background-color: #006ca6; width: 100%; border-top: 1px solid #ffffff; }
+	#globalShoppingTools  li.menuShoppingToolsSubmenu { min-height: 49px; padding: 0; margin: 0; background-color: #006ca6; width: 100%; border-top: 1px solid #ffffff; }
+		#globalShoppingTools  li.menuShoppingToolsSubmenu a { color: #191919; display: block; text-decoration: none; }
+            #globalShoppingTools li span.outer { height: 34px; width: 100%; display: block; padding-top: 15px; }
+				#globalShoppingTools li span.innerL { margin-left: 12px; float: left; color: #ffffff; }
+				#globalShoppingTools li span.innerR { float: right; margin-right: 11px; }
+                #globalShoppingTools li a { color: #ffffff; font-size: 22px; text-decoration: none; display: block; }
+                    #globalShoppingTools li a:visited { color: #ffffff; }
+                    #globalShoppingTools li a:hover { color: #ffffff; }
+                    #globalShoppingTools li a:active { background-color: #0080c5; }
+					#globalShoppingTools li a:focus { background-color: #0080c5; }
+
+		
+
+	
+footer { background-color: #b2b2b2; width: 84%; padding: 16px 8% 25px 8%; font-size: 13px; color: #333333; }
+
+	footer ul.footerSocialLinksTop { list-style-type: none; padding: 0; clear: both; width: 210px; margin: 0 auto; clear: both; }
+		footer ul.footerSocialLinksTop li { float: left; }
+			footer ul.footerSocialLinksTop li a { display: block; }
+		footer ul.footerSocialLinksTop li { margin-left: 26px; }
+		footer ul.footerSocialLinksTop li:first-child { margin-left: 0; }
+
+	footer ul.footerSocialLinksBottom { list-style-type: none; margin: 0 auto 0 auto; padding: 13px 0 0 0; width: 166px; clear: both; }
+		footer ul.footerSocialLinksBottom li { float: left; }
+			footer ul.footerSocialLinksBottom li a { display: block; }
+		footer ul.footerSocialLinksBottom li { margin-left: 26px; }
+		footer ul.footerSocialLinksBottom li:first-child { margin-left: 0; }
+		
+	footer a.emailUpdates { display: block; width: 150px; height: 29px; background-color: #797979; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; margin: 16px auto 20px auto; color: #ffffff; font-size: 16px; padding: 10px 0 0 10px; }
+		footer a.emailUpdates .emailIcon { display: block; float: left; }
+		footer a.emailUpdates .emailText { display: block; float: left; margin-left: 7px; }
+		
+	footer a.hMark { display: block; margin: 0 auto 22px auto; }
+
+	footer p.footerLinks { text-align: center; margin: 11px 0 11px 0; }
+		footer p.footerLinks a { color: #333333; text-decoration: underline; }
+	footer p.footerCopyright { text-align: center; margin: 0 auto; font-size: 13px; margin-top: 17px; }
+	
+	footer div.disclaimers { text-align: center; margin: 16px 0 16px 0; font-size: 12px; color: #333333; }
+		footer div.disclaimers p { text-align: left; margin: 16px 0 16px 0; font-size: 12px; color: #333333; line-height: 16px; }
+		    footer div.disclaimers p a { text-decoration: underline; color: #333333; }
+	
+
+
+
+
+
+/* Loader */
+
+.ballLoader { width: 30%; height: 30%; }
+.ballLoader .wBall { width: 100%; height: 100%; }
+.ballLoader .wBall .wInnerBall { width: 13px; height: 13px; }
+
+.ballLoader { position: relative; }
+	.ballLoader .wBall { position: absolute; opacity: 0; -moz-transform: rotate(225deg); -moz-animation: orbit 4.95s infinite; -webkit-transform: rotate(225deg); -webkit-animation: orbit 4.95s infinite; -ms-transform: rotate(225deg); -ms-animation: orbit 4.95s infinite; -o-transform: rotate(225deg); -o-animation: orbit 4.95s infinite; transform: rotate(225deg); animation: orbit 4.95s infinite; }
+		.ballLoader .wBall .wInnerBall{ position: absolute; background: #000000; left:0px; top:0px; -moz-border-radius: 13px; -webkit-border-radius: 13px; -ms-border-radius: 13px;-o-border-radius: 13px; border-radius: 13px; }
+	.ballLoader .wBall_1 { -moz-animation-delay: 1.08s; -webkit-animation-delay: 1.08s; -ms-animation-delay: 1.08s;-o-animation-delay: 1.08s; animation-delay: 1.08s; }
+	.ballLoader .wBall_2 { -moz-animation-delay: 0.22s; -webkit-animation-delay: 0.22s; -ms-animation-delay: 0.22s; -o-animation-delay: 0.22s; animation-delay: 0.22s; }
+	.ballLoader .wBall_3 { -moz-animation-delay: 0.43s; -webkit-animation-delay: 0.43s; -ms-animation-delay: 0.43s; -o-animation-delay: 0.43s; animation-delay: 0.43s; }
+	.ballLoader .wBall_4 { -moz-animation-delay: 0.65s; -webkit-animation-delay: 0.65s; -ms-animation-delay: 0.65s; -o-animation-delay: 0.65s; animation-delay: 0.65s; }
+	.ballLoader .wBall_5 { -moz-animation-delay: 0.86s; -webkit-animation-delay: 0.86s; -ms-animation-delay: 0.86s; -o-animation-delay: 0.86s; animation-delay: 0.86s; }
+
+@-moz-keyframes orbit {
+	0%{opacity:1;z-index:99;-moz-transform:rotate(180deg);-moz-animation-timing-function:ease-out;}
+	7%{opacity:1;-moz-transform:rotate(300deg);-moz-animation-timing-function:linear;-moz-origin:0;}
+	30%{opacity:1;-moz-transform:rotate(410deg);-moz-animation-timing-function:ease-in-out;-moz-origin:7%;}
+	39%{opacity:1;-moz-transform:rotate(645deg);-moz-animation-timing-function:linear;-moz-origin:30%;}
+	70%{opacity:1;-moz-transform:rotate(770deg);-moz-animation-timing-function:ease-out;-moz-origin:39%;}
+	75%{opacity:1;-moz-transform:rotate(900deg);-moz-animation-timing-function:ease-out;-moz-origin:70%;}
+	76%,100%{opacity:0;-moz-transform:rotate(900deg);}
+}
+
+@-webkit-keyframes orbit {
+	0%{opacity:1;z-index:99;-webkit-transform:rotate(180deg);-webkit-animation-timing-function:ease-out;}
+	7%{opacity:1;-webkit-transform:rotate(300deg);-webkit-animation-timing-function:linear;-webkit-origin:0;}
+	30%{opacity:1;-webkit-transform:rotate(410deg);-webkit-animation-timing-function:ease-in-out;-webkit-origin:7%;}
+	39%{opacity:1;-webkit-transform:rotate(645deg);-webkit-animation-timing-function:linear;-webkit-origin:30%;}
+	70%{opacity:1;-webkit-transform:rotate(770deg);-webkit-animation-timing-function:ease-out;-webkit-origin:39%;}
+	75%{opacity:1;-webkit-transform:rotate(900deg);-webkit-animation-timing-function:ease-out;-webkit-origin:70%;}
+	76%,100%{opacity:0;-webkit-transform:rotate(900deg);}
+}
+
+@-ms-keyframes orbit {
+	0%{opacity:1;z-index:99;-ms-transform:rotate(180deg);-ms-animation-timing-function:ease-out;}
+	7%{opacity:1;-ms-transform:rotate(300deg);-ms-animation-timing-function:linear;-ms-origin:0;}
+	30%{opacity:1;-ms-transform:rotate(410deg);-ms-animation-timing-function:ease-in-out;-ms-origin:7%;}
+	39%{opacity:1;-ms-transform:rotate(645deg);-ms-animation-timing-function:linear;-ms-origin:30%;}
+	70%{opacity:1;-ms-transform:rotate(770deg);-ms-animation-timing-function:ease-out;-ms-origin:39%;}
+	75%{opacity:1;-ms-transform:rotate(900deg);-ms-animation-timing-function:ease-out;-ms-origin:70%;}
+	76%,100%{opacity:0;-ms-transform:rotate(900deg);}
+}
+
+@-o-keyframes orbit {
+	0%{opacity:1;z-index:99;-o-transform:rotate(180deg);-o-animation-timing-function:ease-out;}
+	7%{opacity:1;-o-transform:rotate(300deg);-o-animation-timing-function:linear;-o-origin:0;}
+	30%{opacity:1;-o-transform:rotate(410deg);-o-animation-timing-function:ease-in-out;-o-origin:7%;}
+	39%{opacity:1;-o-transform:rotate(645deg);-o-animation-timing-function:linear;-o-origin:30%;}
+	70%{opacity:1;-o-transform:rotate(770deg);-o-animation-timing-function:ease-out;-o-origin:39%;}
+	75%{opacity:1;-o-transform:rotate(900deg);-o-animation-timing-function:ease-out;-o-origin:70%;}
+	76%,100%{opacity:0;-o-transform:rotate(900deg);}
+}
+
+@keyframes orbit {
+	0%{opacity:1;z-index:99;transform:rotate(180deg);animation-timing-function:ease-out;}
+	7%{opacity:1;transform:rotate(300deg);animation-timing-function:linear;origin:0;}
+	30%{opacity:1;transform:rotate(410deg);animation-timing-function:ease-in-out;origin:7%;}
+	39%{opacity:1;transform:rotate(645deg);animation-timing-function:linear;origin:30%;}
+	70%{opacity:1;transform:rotate(770deg);animation-timing-function:ease-out;origin:39%;}
+	75%{opacity:1;transform:rotate(900deg);animation-timing-function:ease-out;origin:70%;}
+	76%,100%{opacity:0;transform:rotate(900deg);}
+}
+
+
+
+
+
+/* Models Section buttons */
+.orangeButton1 {
+    text-align: center;
+    display: inline-block;
+    text-indent: 0;
+    background-color: #e78a32;
+    border: 0;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    color: #ffffff !important;
+    font-family:'AvenirNextRoundedW01-De 1075568', arial, sans-serif;
+    outline: none;
+    text-decoration: none;
+}
+.orangeButton1:hover { text-decoration: none; }
+
+
+.vehiclesMenu-head{width:100%; height:19px; background-color:#c9c9c9; padding-top:4px;}
+.vehiclesMenu-title{color:#000; font-size:15px; margin-left:12px; border:none;}
+.menuVehiclesSubmenu, .vehiclesMenu-Cars, .vehiclesMenu-Trucks{width:100%; background-color:#eaeaea !important;}
+.vehiclesMenu-Cars li, .vehiclesMenu-Trucks li{width:100%; background-color:#eaeaea !important; margin:0px; border-bottom: 1px solid #ffffff; border-top:none;}
+.vehiclesMenu-Cars li a, .vehiclesMenu-Trucks li a{height:50px;}
+.menuImage-loader{width:20px !important; height:20px; margin-left:25px; margin-top:15px;}
+.vehiclesMenu-image{width:70px; height:50px;  overflow:hidden; display:inline-block; float:left; margin-left:20px;}
+
+.vehiclesSprite{background-image:url(/mobile/images/_global/menu-vehicles-sprite.jpg); background-size:140px 350px;}
+.vehiclesMenu-Accord{background-position:0px 0px;}
+.vehiclesMenu-Civic{background-position:0px -50px;}
+.vehiclesMenu-CR-Z{background-position:0px -100px;}
+.vehiclesMenu-Fit{background-position:0px -150px;}
+.vehiclesMenu-Fit-EV{background-position:0px -200px;}
+.vehiclesMenu-Insight{background-position:0px -250px;}
+.vehiclesMenu-FCX{background-position:70px 0px;}
+.vehiclesMenu-Crosstour{background-position:70px -50px;}
+.vehiclesMenu-CR-V{background-position:70px -100px;}
+.vehiclesMenu-HR-V{background-position:0px -300px;}
+.vehiclesMenu-Odyssey{background-position:70px -150px;}
+.vehiclesMenu-Pilot{background-position:70px -200px;}
+.vehiclesMenu-Ridgeline{background-position:70px -250px;}
+.vehiclesMenu-label{font-size:22px; margin-top:14px; margin-left:22px; display:inline-block; float:left; color:#000;}
+.vehiclesMenu-info{display:inline-block; color:#000; float:left; height:100%; margin-left:12px;}
+.vehiclesMenu-name{font-size:17px; margin-top:8px;}
+.vehiclesMenu-price{font-size:11px; margin-top:5px;}
+.vehiclesMenu-price sup{font-size:8px; vertical-align:top;}
+.vehiclesMenu-expand{display:inline-block; float:right; margin-right:11px; margin-top:14px;}
+.vehiclesMenu-go{display:inline-block; float:right; margin-right:16px; margin-top:14px;}
+
+.vehiclesSubmenu-blueness{width:4px; height:50px; background-color:#0080c5; display:inline-block; float:left;}
+.vehiclesSubmenu-name{font-size:20px; margin-top:16px; display:inline-block; color:#000; float:left; margin-left:12px;}
+.submenuImage-loader{width:25px !important; height:25px; margin-left:35px; margin-top:12px;}
+.vehiclesSubmenu-image-accords, .vehiclesSubmenu-image-civics{width:95px; height:50px; overflow:hidden; display:inline-block; float:left; margin-left:20px; zoom: 0.9; margin-top: 0px; }
+
+.vehiclesSubmenu-Accords-Container{display:none;}
+.accordsSprite{background-image:url(/mobile/images/_global/menu-accords-sprite.jpg); background-size:95px 200px;}
+.vehiclesSubmenu-Accords{width:100%; background-color:#d8d8d8; clear:both; display:block; position:relative; zoom:1;}
+.vehiclesSubmenu-Accords li{width:100%; height:50px; background-color:#ffffff !important; margin:0px; border-bottom: 1px solid #d8d8d8; border-top:none;}
+.vehiclesSubmenu-Accords li a{height:50px; clear:both;}
+.vehiclesSubmenu-AccordSedan{background-position:0px 0px;}
+.vehiclesSubmenu-AccordCoupe{background-position:0px -50px;}
+.vehiclesSubmenu-AccordPlugin{background-position:0px -100px;}
+.vehiclesSubmenu-AccordHybrid{background-position:0px -150px;}
+
+.vehiclesSubmenu-Civics-Container{display:none;}
+.vehiclesSubmenu-image-civics{width:95px; height:50px; overflow:hidden; display:inline-block; float:left; margin-left:20px;}
+.civicsSprite{background-image:url(/mobile/images/_global/menu-civics-sprite.jpg); background-size:190px 200px;}
+.vehiclesSubmenu-Civics{width:100%; background-color:#d8d8d8; clear:both; display:block;}
+.vehiclesSubmenu-Civics li{width:100%; height:50px; background-color:#ffffff !important; margin:0px; border-bottom: 1px solid #d8d8d8; border-top:none;}
+.vehiclesSubmenu-Civics li a{height:50px; clear:both;}
+.vehiclesSubmenu-CivicSedan{background-position:0px 0px;}
+.vehiclesSubmenu-CivicCoupe{background-position:0px -50px;}
+.vehiclesSubmenu-CivicSiSedan{background-position:0px -100px;}
+.vehiclesSubmenu-CivicSiCoupe{background-position:0px -150px;}
+.vehiclesSubmenu-CivicHF{background-position:95px 0px;}
+.vehiclesSubmenu-CivicHybrid{background-position:95px -50px;}
+.vehiclesSubmenu-CivicNaturalGas{background-position:95px -100px;}
+
+
+
