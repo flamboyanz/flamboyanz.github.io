@@ -1,0 +1,8 @@
+html{ background: #000; }
+.content { }
+.content img { width: 100%; }
+.gallery-wrapper { position: relative; }
+
+.carousel-wrapper{ overflow: hidden; position: relative; }
+.carousel-wrapper .item { float:left; width:100%; position: relative; background-color: 000;  }
+.carousel-wrapper .item img { width:100%; }
