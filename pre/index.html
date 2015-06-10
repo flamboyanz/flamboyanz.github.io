@@ -108,16 +108,19 @@
 
 <script type="text/javascript">
 
+
+    //init gallery
+    xbmod.Gallery(
+            document.querySelector('#vlp-gallery-exterior .gallery').querySelectorAll('div'),
+            {
+                container: '#vlp-gallery-exterior .gallery',
+                carousel: true
+            }
+    );
+
     (function($){
 
-        //init gallery
-        xbmod.Gallery(
-                document.querySelector('#vlp-gallery-exterior .gallery').querySelectorAll('div'),
-                {
-                    container: '#vlp-gallery-exterior .gallery',
-                    carousel: true
-                }
-        );
+
 
         window.mySwipe = new Swipe(
                 document.querySelector('.gallery')

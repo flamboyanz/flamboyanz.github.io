@@ -448,8 +448,6 @@ function Swipe(container, options) {
         // set touchstart event on element
         if (browser.touch) element.addEventListener('touchstart', events, false);
 
-        console.log(element)
-
         if (browser.transitions) {
             element.addEventListener('webkitTransitionEnd', events, false);
             element.addEventListener('msTransitionEnd', events, false);
