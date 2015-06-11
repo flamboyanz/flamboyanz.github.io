@@ -29,10 +29,6 @@ function Swipe(container, options) {
     if (!container) return;
     var element = container.children[0].children[0]
 
-
-    console.log(element)
-
-
     var slides, slidePos, width, length;
     options = options || {};
     var index = parseInt(options.startSlide, 10) || 0;
@@ -52,7 +48,8 @@ function Swipe(container, options) {
         slidePos = new Array(slides.length);
 
         // determine width of each slide
-        width = container.getBoundingClientRect().width || container.offsetWidth;
+       //width = container.getBoundingClientRect().width || container.offsetWidth;
+        width = document.body.clientWidth;
 
         element.style.width = (slides.length * width) + 'px';
 
