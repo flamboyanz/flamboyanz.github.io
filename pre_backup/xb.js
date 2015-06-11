@@ -1,185 +1,5 @@
 
 
-(function () {
-    'use strict';
-
-    function extend(obj1, obj2) {
-        var prop;
-        for (prop in obj2) {
-            if (obj2.hasOwnProperty(prop)) {
-                obj1[prop] = obj2[prop];
-            }
-        }
-        return obj1;
-    }
-
-    function Helper(query) {
-        if (!this || this.find !== Helper.prototype.find) {
-            // Called as function instead of as constructor,
-            // so we simply return a new instance:
-            return new Helper(query);
-        }
-
-        this.length = 0;
-        if (query) {
-            if (typeof query === 'string') {
-                query = this.find(query);
-            }
-            if (query.nodeType || query === query.window) {
-                // Single HTML element
-                this.length = 1;
-                this[0] = query;
-            } else {
-                // HTML element collection
-                var i = query.length;
-                this.length = i;
-                while (i) {
-                    i -= 1;
-                    this[i] = query[i];
-                }
-            }
-        }
-    }
-
-    Helper.extend = extend;
-
-    Helper.contains = function (container, element) {
-        do {
-            element = element.parentNode;
-            if (element === container) {
-                return true;
-            }
-        } while (element);
-        return false;
-    };
-
-    Helper.parseJSON = function (string) {
-        return window.JSON && JSON.parse(string);
-    };
-
-    extend(Helper.prototype, {
-
-        find: function (query) {
-            var container = this[0] || document;
-            if (typeof query === 'string') {
-                if (container.querySelectorAll) {
-                    query = container.querySelectorAll(query);
-                } else if (query.charAt(0) === '#') {
-                    query = container.getElementById(query.slice(1));
-                } else {
-                    query = container.getElementsByTagName(query);
-                }
-            }
-            return new Helper(query);
-        },
-
-        hasClass: function (className) {
-            if (!this[0]) {
-                return false;
-            }
-            return new RegExp('(^|\\s+)' + className +
-                '(\\s+|$)').test(this[0].className);
-        },
-
-        addClass: function (className) {
-            var i = this.length,
-                element;
-            while (i) {
-                i -= 1;
-                element = this[i];
-                if (!element.className) {
-                    element.className = className;
-                    return this;
-                }
-                if (this.hasClass(className)) {
-                    return this;
-                }
-                element.className += ' ' + className;
-            }
-            return this;
-        },
-
-        removeClass: function (className) {
-            var regexp = new RegExp('(^|\\s+)' + className + '(\\s+|$)'),
-                i = this.length,
-                element;
-            while (i) {
-                i -= 1;
-                element = this[i];
-                element.className = element.className.replace(regexp, ' ');
-            }
-            return this;
-        },
-
-        on: function (eventName, handler) {
-            var eventNames = eventName.split(/\s+/),
-                i,
-                element;
-            while (eventNames.length) {
-                eventName = eventNames.shift();
-                i = this.length;
-                while (i) {
-                    i -= 1;
-                    element = this[i];
-                    if (element.addEventListener) {
-                        element.addEventListener(eventName, handler, false);
-                    } else if (element.attachEvent) {
-                        element.attachEvent('on' + eventName, handler);
-                    }
-                }
-            }
-            return this;
-        },
-
-        off: function (eventName, handler) {
-            var eventNames = eventName.split(/\s+/),
-                i,
-                element;
-            while (eventNames.length) {
-                eventName = eventNames.shift();
-                i = this.length;
-                while (i) {
-                    i -= 1;
-                    element = this[i];
-                    if (element.removeEventListener) {
-                        element.removeEventListener(eventName, handler, false);
-                    } else if (element.detachEvent) {
-                        element.detachEvent('on' + eventName, handler);
-                    }
-                }
-            }
-            return this;
-        },
-
-        empty: function () {
-            var i = this.length,
-                element;
-            while (i) {
-                i -= 1;
-                element = this[i];
-                while (element.hasChildNodes()) {
-                    element.removeChild(element.lastChild);
-                }
-            }
-            return this;
-        },
-
-        first: function () {
-            return new Helper(this[0]);
-        }
-
-    });
-
-    if (typeof define === 'function' && define.amd) {
-        define(function () {
-            return Helper;
-        });
-    } else {
-        window.xbmod = window.xbmod || {};
-        window.xbmod.helper = Helper;
-    }
-}());
-
 
 /* global define, window, document, DocumentTouch */
 
@@ -227,7 +47,7 @@
 
         this.initOptions(options);
 
-        this.initialize();
+       this.initialize();
     }
 
     $.extend(Gallery.prototype, {
@@ -241,7 +61,7 @@
             titleElement: 'h3',
             // The class to add when the gallery is visible:
             displayClass: 'xbmod-gallery-display',
-            // The class to add when the gallery controls are visible:1
+            // The class to add when the gallery controls are visible:
             controlsClass: 'xbmod-gallery-controls',
             // The class to add when the gallery only displays one element:
             singleClass: 'xbmod-gallery-single',
@@ -831,48 +651,6 @@
                 x: touches.pageX - this.touchStart.x,
                 y: touches.pageY - this.touchStart.y
             };
-            touchDeltaX = this.touchDelta.x;
-            // Detect if this is a vertical scroll movement (run only once per touch):
-            if (this.isScrolling === undefined) {
-                this.isScrolling = this.isScrolling ||
-                    Math.abs(touchDeltaX) < Math.abs(this.touchDelta.y);
-            }
-            if (!this.isScrolling) {
-                // Always prevent horizontal scroll:
-                event.preventDefault();
-                // Stop the slideshow:
-                window.clearTimeout(this.timeout);
-                if (this.options.continuous) {
-                    indices = [
-                        this.circle(index + 1),
-                        index,
-                        this.circle(index - 1)
-                    ];
-                } else {
-                    // Increase resistance if first slide and sliding left
-                    // or last slide and sliding right:
-                    this.touchDelta.x = touchDeltaX =
-                        touchDeltaX /
-                        (((!index && touchDeltaX > 0) ||
-                        (index === this.num - 1 && touchDeltaX < 0)) ?
-                            (Math.abs(touchDeltaX) / this.slideWidth + 1) : 1);
-                    indices = [index];
-                    if (index) {
-                        indices.push(index - 1);
-                    }
-                    if (index < this.num - 1) {
-                        indices.unshift(index + 1);
-                    }
-                }
-                while (indices.length) {
-                    index = indices.pop();
-
-                    this.translateX(index, touchDeltaX + this.positions[index], 0);
-                }
-
-            } else if (this.options.closeOnSwipeUpOrDown) {
-                this.translateY(index, this.touchDelta.y + this.positions[index], 0);
-            }
         },
 
         ontouchend: function (event) {
@@ -924,22 +702,22 @@
 
                     if (this.options.continuous) {
 
-                        this.move(this.circle(indexForward), distanceForward, 0, 'a1');
-                        this.move(this.circle(index - 2 * direction), distanceBackward, 0, 'a2');
+                        /*this.move(this.circle(indexForward), distanceForward, 0, 'a1');
+                        this.move(this.circle(index - 2 * direction), distanceBackward, 0, 'a2');*/
 
                     } else if (indexForward >= 0 &&
                         indexForward < this.num) {
 
-                        this.move(indexForward, distanceForward, 0);
+                        //this.move(indexForward, distanceForward, 0);
                     }
 
-                    this.move(index, this.positions[index] + distanceForward, speed);
+                   /* this.move(index, this.positions[index] + distanceForward, speed);
 
                     this.move(
                         this.circle(indexBackward),
                         this.positions[this.circle(indexBackward)] + distanceForward,
                         speed
-                    );
+                    );*/
 
 
                     index = this.circle(indexBackward);
@@ -949,7 +727,7 @@
 
                 } else {
 
-                    // Move back into position
+                   /* // Move back into position
                     if (this.options.continuous) {
                         this.move(this.circle(index - 1), -slideWidth, speed);
                         this.move(index, 0, speed);
@@ -962,15 +740,15 @@
                         if (index < this.num - 1) {
                             this.move(index + 1, slideWidth, speed);
                         }
-                    }
+                    }*/
                 }
             } else {
-                if (isValidClose) {
+               /* if (isValidClose) {
                     this.close();
                 } else {
                     // Move back into position
                     this.translateY(index, 0, speed);
-                }
+                }*/
             }
         },
 
@@ -1132,14 +910,11 @@
 
         handleSlide: function (index) {
 
-
             if (!this.options.continuous) {
                 this.updateEdgeClasses(index);
             }
             this.loadElements(index);
-            if (this.options.unloadElements) {
-                this.unloadElements(index);
-            }
+
             this.setTitle(index);
         },
 
@@ -1148,6 +923,7 @@
             var base = this;
             this.index = index;
             this.handleSlide(index);
+
             this.updateActiveThumb(index);
             this.checkPos(index);
             base.publishIndexCount(index);
@@ -1678,129 +1454,12 @@
             }
 
             base.captionstate = false;
-
         }
 
-    });
+        });
 
     return Gallery;
 }));
-
-/* global define, window, document */
-/* MAIN TAB NAVIGATION */
-
-var MainTabs = {};
-
-MainTabs.Module = (function() {
-
-    var component = {};
-
-    component.buildTabControls = function() {
-
-        var base = this;
-        base.roundOne = true;
-
-        var h1, h2;
-
-        jQuery('ul.gallery-main-tabs li').on('click', 'a', function(event){
-            _gallery.tracking.trackMainTab(this);
-            h1 = h1 || jQuery('.gallery').height()
-            h2 = h2 || parseInt(jQuery.mobile.activePage.find('.container').css('min-height'))
-
-            base.handleTabs.apply(this, [h1, h2])
-
-        })
-
-        jQuery(window).on('orientationchange', function(event) {
-
-            /*
-             if (window.innerWidth > window.innerHeight) {
-             // landscape
-             jQuery('.gallery-wrapper').css({'height' : '100%'});
-             jQuery('.gallery-wrapper section').css({'height' : '' });
-             } else {
-
-             //jQuery('.gallery-wrapper').css({'height' : '100%'});
-             //jQuery('.gallery-wrapper section').css({'height' : '' });
-             }
-             */
-        })
-
-    }
-
-    component.handleTabs = function(h1, h2){
-        var base = this;
-        var ctrlGroup = jQuery('.control-wrapper');
-        var mainTabContainer = jQuery('.gallery-main-tabs');
-        var tabItems = mainTabContainer.find('a'),
-
-            selectedCtrl,
-            selectedItem = jQuery(this);
-
-        if(selectedItem.attr('data-content') === 'colorizer'){
-
-
-            /*if(window.innerWidth < window.innerHeight){
-
-             jQuery('.gallery-wrapper').css({'height' : h2 + 'px'});
-             jQuery('.gallery-wrapper section').css({'height' : h2 + 'px'});
-
-             }*/
-
-            jQuery('.color-swatch-outer-container').css('visibility', 'visible');
-            jQuery('.colorizer-desc').css('display', 'block');
-
-            if(base.roundOne !== null){
-
-                Gallery360.Module.initiate360();
-                Gallery360.Module.preload360(false);
-                base.roundOne = null;
-
-                //DTM link tracking
-                DATALAYER.linkTrack(selectedItem, {
-                    eVar70: "gallery-mobile",
-                    eVar75: "gallery-mobile:360",
-                    eVar68: "click",
-                    events: "event70"
-                });
-
-
-            }
-        } else {
-
-            /*if(window.innerWidth < window.innerHeight){
-
-             jQuery('.gallery-wrapper').css({'height' : h1 + 'px'});
-             jQuery('.gallery-wrapper section').css({'height' : h1 + 'px'});
-             }*/
-
-        }
-
-        if( selectedItem.attr('class') !== 'selected' ) {
-
-            var selectedTab = selectedItem.data('content'),
-                selectedContent = jQuery('.gallery-wrapper').find('section[data-content="'+selectedTab+'"]');
-
-            tabItems.removeClass('selected');
-            selectedItem.addClass('selected');
-
-            selectedContent.addClass('selected').siblings('section').removeClass('selected');
-            selectedCtrl = ctrlGroup.find('section[data-content="'+selectedTab+'"]');
-            selectedCtrl.addClass('selected').siblings('section').removeClass('selected');
-
-        }
-
-        jQuery('section[data-content="' + selectedTab + '"]').find('.thumbstrip').find('img[data-src]').each(function(){
-
-            LazyLoader.loadContent(this);
-        });
-
-        //tab height
-    }
-
-    return component;
-
-})();
 
 /* THUMBSTRIP */
 
@@ -1916,7 +1575,6 @@ MainTabs.Module = (function() {
 
             base.scrollMovement(base.$thumbstrip, scrollOffset);
             base.scrollMovement(jQuery('ul.color-swatch'), scrollOffset);
-
 
             base.addTabCount();
 
@@ -2103,6 +1761,7 @@ MainTabs.Module = (function() {
                 totalSlide,
 
                 ctrlGroup = jQuery.mobile.activePage.find('.control-wrapper'),
+                //ctrlGroup = jQuery('.control-wrapper')
                 mainTabContainer = jQuery.mobile.activePage.find('.gallery-main-tabs'),
                 mainTab = mainTabContainer.children();
 
@@ -2132,6 +1791,7 @@ MainTabs.Module = (function() {
     });
 
     return Gallery;
+
 }));
 
 /* FULL SCREEN */
@@ -2223,7 +1883,8 @@ MainTabs.Module = (function() {
 
             this.publishIndexCount(this.getIndex());
 
-            var activePage = jQuery($.mobile.activePage),
+            //var activePage = jQuery($.mobile.activePage),
+            var activePage = jQuery('body'),
                 $parentContainer = jQuery( '#vlp-gallery-' + base.parentId ).find('.gallery');
             base.fsHeight = Math.round((document.body.clientHeight - $parentContainer.find('.slide img').height()) / 2);
 
@@ -2353,7 +2014,8 @@ MainTabs.Module = (function() {
         checkPos: function(index){
 
             var base = this,
-                activePage = jQuery($.mobile.activePage),
+                //activePage = jQuery($.mobile.activePage),
+                activePage = jQuery('body'),
                 $parentContainer = jQuery( '#vlp-gallery-' + base.parentId ).find('.gallery');
 
             if (window.innerWidth > window.innerHeight) {
@@ -2433,260 +2095,117 @@ MainTabs.Module = (function() {
     return Gallery;
 }));
 
-// COLORIZER 360
 
-var Gallery360 = {};
+/* MAIN TAB NAVIGATION */
 
-Gallery360.Module = (function() {
+var MainTabs = {};
 
-    var component = {},
+MainTabs.Module = (function() {
 
-        cOptions = {
-            duration: 0,
-            num: 36,
-            rotateFrom: 29,
-            color: '',
-            defaultColor : '',
-            clicked : false,
-            roundOne: true,
-            imgNum : 0
-        };
+    var component = {};
 
-
-    component.initiate360 = function(){
-
-        var base = this,
-            $imgs;
-
-        base.$colorSwatch = $.mobile.activePage.find('.color-swatch');
-        $('.img-container').append('<div class="loader">&nbsp;</div>');
-
-        cOptions.roundOne = true;
-        base.config360();
-        base.setDefaultColor();
-        $imgs = $.mobile.activePage.find(".img-container"); // the element that will be swipeable
-
-
-        var swipeOptions=
-        {
-            triggerOnTouchEnd : true,
-            swipeStatus : base.swipeStatus,
-            allowPageScroll:"vertical",
-            threshold:0
-        };
-
-        $imgs.swipe( swipeOptions );
-
-        //base.swipeStatus(cOptions);
-
-        var elem = jQuery('.color-swatch').find('li[data-color="' + cOptions.defaultColor.toLowerCase() + '"]');
-
-        var colorName = jQuery(elem).children('p.color-desc').html();
-        var colorDesc = jQuery(elem).children('p.color-model').html();
-
-
-        jQuery('.colorInfo h4').html(colorName).fadeIn(100);
-        jQuery('.colorInfo p').html(colorDesc).fadeIn(100);
-
-
-        jQuery(elem).find('p.color-model').addClass('checkmark');
-
-    };
-
-    component.config360 = function(){
-
-        var base = this,
-            cxt = context,
-            brand = cxt.brand,
-            year = cxt.year,
-            vehicle = cxt.vehicle;
-
-        //cOptions.src = '/en/mobile/images/vehicles/' + year + '/vhp_gallery/' + vehicle + '/360/C/';
-        cOptions.src = '/assets/images/Vehicles/2015/' + context.vehicle + '/Overview/Gallery/mobile-360/'
-        cOptions.imgNum = 0;
-
-        cOptions.imageLoaded = [];
-
-    };
-
-    component.update360 = function(dataclr, ctangle, clicked, target){
+    component.buildTabControls = function() {
 
         var base = this;
-        base.setDefaultColor(dataclr, ctangle);
-        base.preload360(dataclr, ctangle, clicked, target);
+        base.roundOne = true;
 
-        var elem = (target) ? jQuery(target).parent('li') : jQuery('.color-swatch').find('li[data-color="' + clr.toLowerCase() + '"]');
+        var h1, h2;
 
-        var colorName = jQuery(elem).children('p.color-desc').html();
-        var colorDesc = jQuery(elem).children('p.color-model').html();
-        jQuery('.colorInfo h4').fadeOut(100, function(){
-            jQuery('.colorInfo h4').html(colorName).fadeIn(100);
-            jQuery('.colorInfo p').html(colorDesc).fadeIn(100);
-        });
+        jQuery('ul.gallery-main-tabs li').on('click', 'a', function(event){
+            _gallery.tracking.trackMainTab(this);
+            h1 = h1 || jQuery('.gallery').height()
+            h2 = h2 || parseInt(jQuery.mobile.activePage.find('.container').css('min-height'))
 
-        jQuery(elem).find('p.color-model').addClass('checkmark');
+            base.handleTabs.apply(this, [h1, h2])
 
-    };
+        })
 
-    component.setDefaultColor = function(dataclr, ctangle, clicked, target){
+        jQuery(window).on('orientationchange', function(event) {
 
-        var base = this,
-            imageIndex = 1;
+            /*
+             if (window.innerWidth > window.innerHeight) {
+             // landscape
+             jQuery('.gallery-wrapper').css({'height' : '100%'});
+             jQuery('.gallery-wrapper section').css({'height' : '' });
+             } else {
 
-        cOptions.defaultColor = (dataclr || base.$colorSwatch.find('li.selected').data('color')).toUpperCase();
-        imageIndex = ctangle || cOptions.rotateFrom;
-        document.getElementById("myImg").src= cOptions.src + cOptions.defaultColor + '/' + imageIndex + '.jpg';
+             //jQuery('.gallery-wrapper').css({'height' : '100%'});
+             //jQuery('.gallery-wrapper section').css({'height' : '' });
+             }
+             */
+        })
 
-    };
+    }
 
-    component.preload360 = function(dataclr, ctangle, clicked, target){
+    component.handleTabs = function(h1, h2){
+        var base = this;
+        var ctrlGroup = jQuery('.control-wrapper');
+        var mainTabContainer = jQuery('.gallery-main-tabs');
+        var tabItems = mainTabContainer.find('a'),
 
-        if ($.inArray(cOptions.defaultColor, cOptions.imageLoaded) !== -1) {
-            //console.log('color found')
-            return false;
+            selectedCtrl,
+            selectedItem = jQuery(this);
 
-        }
-        if (typeof(ctangle) == "undefined") {
-            ctangle = 29;
+        if(selectedItem.attr('data-content') === 'colorizer'){
+
+
+            /*if(window.innerWidth < window.innerHeight){
+
+             jQuery('.gallery-wrapper').css({'height' : h2 + 'px'});
+             jQuery('.gallery-wrapper section').css({'height' : h2 + 'px'});
+
+             }*/
+
+            jQuery('.color-swatch-outer-container').css('visibility', 'visible');
+            jQuery('.colorizer-desc').css('display', 'block');
+
+            if(base.roundOne !== null){
+
+                Gallery360.Module.initiate360();
+                Gallery360.Module.preload360(false);
+                base.roundOne = null;
+
+                //DTM link tracking
+                DATALAYER.linkTrack(selectedItem, {
+                    eVar70: "gallery-mobile",
+                    eVar75: "gallery-mobile:360",
+                    eVar68: "click",
+                    events: "event70"
+                });
+
+
+            }
         } else {
-            ctangle = parseInt(ctangle);
-        }
-        cOptions.imageLoaded.push(cOptions.defaultColor.toString())
 
-        $('.loader').show().addClass('slide-loading');
-        $('.img360 img').css({'opacity': 0.50});
+            /*if(window.innerWidth < window.innerHeight){
 
-        var base = this,
-            $preloadImg = document.getElementById('preload-imgs');
+             jQuery('.gallery-wrapper').css({'height' : h1 + 'px'});
+             jQuery('.gallery-wrapper section').css({'height' : h1 + 'px'});
+             }*/
 
-        $($preloadImg).empty();
-
-        var promises = [];
-        for (var i = 1; i <= 18; i++) {
-            var img = document.createElement('img');
-            var img2 = document.createElement('img');
-            var src = (ctangle + i) <=36 ? (ctangle + i) : (ctangle + i - 36);
-            var src2 = (ctangle - i) > 0 ? ((ctangle + 1) - i) : (ctangle - i + 36);
-
-            if (i<=5) {
-                (function (promise) {
-                    img.onload = function () {
-                        promise.resolve();
-                    };
-                    img2.onload = function () {
-                        promise.resolve();
-                    };
-                })(promises[i] = $.Deferred());
-            }
-
-            img.src = cOptions.src + cOptions.defaultColor + '/' + src + '.jpg';
-            img2.src = cOptions.src + cOptions.defaultColor + '/' + src2 + '.jpg';
-            $preloadImg.appendChild(img);
-            if (i != 18) {
-                $preloadImg.appendChild(img2);
-            }
         }
 
-        $.when.apply($, promises).done(function () {
-            //console.log("360 assets loaded");
+        if( selectedItem.attr('class') !== 'selected' ) {
 
-            $('.loader').removeClass('slide-loading').hide();
-            $('.img360 img').css({'opacity': 1});
+            var selectedTab = selectedItem.data('content'),
+                selectedContent = jQuery('.gallery-wrapper').find('section[data-content="'+selectedTab+'"]');
 
-            if (cOptions.roundOne === true) {
-                base.rotateOnClick(cOptions.roundOne);
-                cOptions.roundOne = null;
-            }
+            tabItems.removeClass('selected');
+            selectedItem.addClass('selected');
 
+            selectedContent.addClass('selected').siblings('section').removeClass('selected');
+            selectedCtrl = ctrlGroup.find('section[data-content="'+selectedTab+'"]');
+            selectedCtrl.addClass('selected').siblings('section').removeClass('selected');
+
+        }
+
+        jQuery('section[data-content="' + selectedTab + '"]').find('.thumbstrip').find('img[data-src]').each(function(){
+
+            LazyLoader.loadContent(this);
         });
 
-    };
-
-    component.rotateOnClick  = function(val){
-        var base = this,
-
-            x,
-            imgPath = cOptions.src + cOptions.defaultColor + '/';
-
-        if(val) imgPath = imgPath + '1.jpg';
-
-        var n = imgPath.lastIndexOf('/'),
-            p = imgPath.substring(0, n+1),
-            q = imgPath.substring(imgPath.lastIndexOf("."), imgPath.length),
-            r;
-
-        function rotation(counter) {
-            x = counter;
-            x++;
-            if (x <= 34) {
-                setTimeout(function () {
-                    r = p + x + q;
-                    document.getElementById("myImg").src= r;
-                    rotation(x);
-                }, 50);
-            }
-        }
-
-        rotation(cOptions.rotateFrom);
-
-    };
-
-    var currentX = 0,
-        isMoving = false,
-        currentImage = 34;
-
-    component.swipeStatus = function(event, phase, direction, distance){
-
-        var el = ".img360",
-            totalImages = cOptions.num,
-            fileType = '.jpg',
-            $img = $(el).find('img');
-
-        var touch = window.ontouchstart !== undefined || (window.DocumentTouch && document instanceof DocumentTouch),
-            actualTouch = (touch) ? (event.touches[0] || event.changedTouches[0]) : event;
-
-        if(event.type === 'touchstart' || event.type === 'mousedown') {
-            isMoving = true;
-            currentX = actualTouch.clientX;
-        }
-
-        if(event.type === 'touchmove' || event.type === 'mousemove'){
-
-            if (isMoving == true){
-                spinImages(actualTouch.clientX)
-            } else {
-                currentX = actualTouch.clientX;
-            }
-
-        }
-
-        function spinImages(newX){
-
-            newX = Math.floor(newX);
-
-            if (currentX - newX > 25) {
-                currentX = newX
-                currentImage = ++currentImage > totalImages ? 1 : currentImage;
-                $img.attr('src', cOptions.src + cOptions.defaultColor + '/' + currentImage + fileType);
-
-            } else if (currentX - newX < -25) {
-                currentX = newX;
-                currentImage = --currentImage < 1 ? totalImages : currentImage;
-                $img.attr('src', cOptions.src + cOptions.defaultColor + '/' + currentImage + fileType);
-            }
-        }
-
-        if(event.type === 'touchend' || event.type === 'mouseup'){
-            isMoving = false;
-        }
-
-        if((phase === 'end' || phase === 'cancel')){
-            var a1 = 'swipe_gallery_mobile',
-                lcn = 'rotate_360';
-            linkTrack(a1, lcn);
-        }
-
-    };
+        //tab height
+    }
 
     return component;
 
@@ -2760,7 +2279,7 @@ Gallery360.Module = (function() {
                         } else if( base.options.direction === -1){
                             lcn = lcn + '_next_swipe';
                         }
-                        linkTrack(a1, lcn);
+                       // linkTrack(a1, lcn);
                     }
 
 
@@ -2838,7 +2357,7 @@ _gallery.tracking = (function() {
         if ($(el).hasClass('selected') !== true) {
             lcn = $(el).data('content');
             if( lcn === 'colorizer') lcn = '360_colors';
-            linkTrack(a1, lcn);
+            //linkTrack(a1, lcn);
         }
 
     };
