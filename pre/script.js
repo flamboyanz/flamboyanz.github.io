@@ -1,10 +1,3 @@
-/*
- * Swipe 2.0
- *
- * Brad Birdsall
- * Copyright 2013, MIT License
- *
- */
 
 function Swipe(container, options) {
 

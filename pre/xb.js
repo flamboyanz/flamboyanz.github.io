@@ -1,4 +1,6 @@
 
+
+
 /* global define, window, document, DocumentTouch */
 
 (function (factory) {
@@ -39,7 +41,9 @@
         jQuery(options.container).wrapInner("<div class='carousel-wrapper-outer'></div>");
         jQuery(options.container).find('.carousel-wrapper-outer').wrapInner("<div class='carousel-wrapper'></div>");
 
-        console.log(this)
+        jQuery.mobile = {}
+
+        jQuery.mobile.activePage = jQuery('body')
 
         this.initOptions(options);
 
@@ -922,6 +926,30 @@
             this.index = index;
             this.handleSlide(index);
 
+            this.updateActiveThumb(index);
+            this.checkPos(index);
+            base.publishIndexCount(index);
+
+            if(check === 'swiped'){
+                this.setTimeout(this.options.onslide, [index, this.slides[index], true]);
+            } else {
+                this.setTimeout(this.options.onslide, [index, this.slides[index]]);
+            }
+
+            if(check !== 'clicked'){
+                this.checkThumbPos(index)
+            }
+
+            if( base.captionstate === true ){
+                jQuery('.gallerycaption').addClass('on')
+            } else{
+
+            }
+
+            if( !base.overlayState){
+                jQuery('.gallerycaption').addClass('on')
+            }
+
         },
 
         setTitle: function (index) {
@@ -1550,7 +1578,6 @@
             base.scrollMovement(base.$thumbstrip, scrollOffset);
             base.scrollMovement(jQuery('ul.color-swatch'), scrollOffset);
 
-
             base.addTabCount();
 
             //gradient layer
@@ -1736,6 +1763,7 @@
                 totalSlide,
 
                 ctrlGroup = jQuery.mobile.activePage.find('.control-wrapper'),
+                //ctrlGroup = jQuery('.control-wrapper')
                 mainTabContainer = jQuery.mobile.activePage.find('.gallery-main-tabs'),
                 mainTab = mainTabContainer.children();
 
@@ -1767,3 +1795,577 @@
     return Gallery;
 
 }));
+
+/* FULL SCREEN */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            './xbmod-helper',
+            './xbmod-gallery'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(
+            window.xbmod.helper || window.jQuery,
+            window.xbmod.Gallery
+        );
+    }
+}(function ($, Gallery) {
+    'use strict';
+
+    jQuery.extend(Gallery.prototype.options, {
+        // The querySelector of the thumbnail container:
+        // tabContainer: 'ul.gallery-main-tabs'
+    });
+
+    var buildControls = Gallery.prototype.buildControls;
+
+    jQuery.extend(Gallery.prototype, {
+
+        buildControls: function(){
+
+            this.addFullScreen();
+            buildControls.call(this);
+
+        },
+
+        addFullScreen : function(){
+            var base = this;
+            base.overlayState = false;
+
+            var captionIcon = jQuery("<div>", {
+                class: "captionIcon",
+                html: "",
+                click: function(event){
+                    if(jQuery('.gallerycaption').hasClass('on') === false){
+                        jQuery('.gallerycaption').addClass('on')
+                        base.captionstate = true;
+                    } else {
+                        jQuery('.gallerycaption').removeClass('on');
+                        base.captionstate = false;
+                    }
+                    base.trackCaptionBtn(base.captionstate)
+                }
+            });
+
+            var fsBtn = jQuery("<div>", {
+                class : "fsBtn",
+                html: "&nbsp;",
+                click: function(){
+                    base.overlayState = false;
+
+                    jQuery(window).on('orientationchange', function(event) {
+
+                        base.checkPos()
+
+                    });
+
+                    base.fullScreenFn(base.overlayState);
+                }
+            });
+
+            jQuery(base.slidesContainer[0]).parent().append(captionIcon);
+            jQuery(base.slidesContainer[0]).parent().append(fsBtn);
+
+
+        },
+
+        fullScreenFn : function(overlayState){
+
+            var base = this;
+
+            jQuery(window).trigger('orientationchange');
+
+            base.checkPos()
+
+            jQuery('.gallerycaption').addClass('on');
+
+            this.publishIndexCount(this.getIndex());
+
+            //var activePage = jQuery($.mobile.activePage),
+            var activePage = jQuery('body'),
+                $parentContainer = jQuery( '#vlp-gallery-' + base.parentId ).find('.gallery');
+            base.fsHeight = Math.round((document.body.clientHeight - $parentContainer.find('.slide img').height()) / 2);
+
+            base.fsheightL = document.body.clientWidth + 'px';
+            base.fsHeightR = document.body.clientHeight + 'px';
+
+            jQuery('.fsPrevArrow, .fsNextArrow').show();
+
+            base.overlayState = overlayState;
+
+            if(!base.overlayState){
+
+                jQuery(".gallery").addClass('gallery-fullscreen-1')
+                    .css({
+                        'position': 'fixed',
+                        'z-index' : 99999,
+                        'overflow' : 'hidden',
+                        'height' : '100%',
+                        'width' : '100%',
+                        'top': 0,
+                        'left': 0,
+                        'right':0,
+                        'bottom':0,
+                        'background': 'rgba(0, 0,0, 0.9)',
+                        'margin' : 'auto'
+                    })
+
+                jQuery('.slide').css({
+                    'top': base.fsHeight + 'px'
+                })
+
+
+                activePage.css({
+                    'position' : 'fixed'
+                });
+
+                jQuery('header').height('0').css('visibility', 'hidden');
+                jQuery('.vehicleInfo, .yearToggle').height('0').css({'margin': '0px', 'visibility':'hidden', 'display' : 'none'});
+
+                jQuery(".fsBtn").addClass("closeFs");
+
+                var fsIcon = jQuery("<div>", {
+                    class : "fsIcon",
+                    html: "&nbsp;",
+                    click: function(){
+                        base.overlayState = true;
+                        jQuery(window).off('orientationchange');
+                        base.fullScreenFn(base.overlayState);
+                    }
+                }).css({'top': window.innerHeight - 40 + 'px' });
+
+                jQuery('.gallery').append(fsIcon);
+
+                jQuery('.slide').css({
+                    'top': base.fsHeight
+                    //'height' : 'auto'
+
+                });
+
+                /*jQuery('.portraitMode img').css({
+                 'height': 'auto',
+                 'width': 'auto'
+
+                 });*/
+
+                jQuery('.fsIndexCount').css({'top': window.innerHeight - 33 + 'px' }).fadeIn(50);
+
+                base.trackFsBtn(base.overlayState)
+
+
+            } else {
+
+                if( base.captionstate === true ){
+                    jQuery('.gallerycaption').addClass('on')
+                } else{
+                    jQuery('.gallerycaption').removeClass('on')
+                }
+
+
+                jQuery(window).off('orientationchange');
+
+                jQuery('.fsIndexCount').fadeOut(50);
+
+                jQuery('header').height('').css('visibility', 'visible');
+
+                jQuery(".gallery").removeClass('gallery-fullscreen-1')
+
+                    .css({
+                        'position': 'relative',
+                        'overflow' : 'hidden',
+                        'top': 0,
+                        'left': 0,
+                        'right':'',
+                        'bottom':'',
+                        'background': ''
+
+                    });
+
+                activePage.css({
+                    'position' : ''
+                });
+
+                jQuery('.vehicleInfo').height('auto').css({'margin': '7.5px 0px', 'visibility':'visible', 'display' : 'block'});
+                jQuery('.yearToggle').height('auto').css({'margin-top': '45px', 'visibility':'visible', 'display' : 'table'});
+
+                jQuery('.slide').css({
+                    'top': 0 + 'px',
+                    'height' : '100%'
+
+                }).find('img').css({
+                    'height': 'auto',
+                    'width' : 'auto'
+
+                });
+
+                jQuery('.slide').removeClass('landscapeMode').removeClass('portraitMode');
+                jQuery('.fsPrevArrow, .fsNextArrow').hide();
+                // jQuery('.gallerycaption').css({'top' : '', bottom: '5px' });
+                jQuery('.fsIcon').remove();
+
+                base.trackFsBtn(base.overlayState)
+
+
+            }
+        },
+
+        checkPos: function(index){
+
+            var base = this,
+                //activePage = jQuery($.mobile.activePage),
+                activePage = jQuery('body'),
+                $parentContainer = jQuery( '#vlp-gallery-' + base.parentId ).find('.gallery');
+
+            if (window.innerWidth > window.innerHeight) {
+
+                if(!base.overlayState){
+
+                    jQuery('.slide').removeClass('portraitMode').addClass('landscapeMode')
+
+                    jQuery('.slide').css({
+                        'top': '0',
+                        'height' : 'auto'
+                    })
+
+                    jQuery('.landscapeMode img, .slide img').css({
+                        'width' : '75%',
+                        'height' : 'auto'
+                    });
+
+                    jQuery('.fsIcon').css({'top': document.body.clientHeight - 30 + 'px' });
+                    jQuery('.fsIndexCount').css({'top': document.body.clientHeight - 30 + 'px' });
+
+                    var captionPos = $parentContainer.find('.slide img').height() - 55;
+
+                    // jQuery('.gallerycaption').css({ 'top' : captionPos + 'px', 'bottom' : 'none' });
+                    var fsTop = window.innerHeight/2;
+                    jQuery('.fsArrow').css({'top' : fsTop + 'px' });
+
+                }
+
+            } else {
+                //PORTRAIT
+
+                if(!base.overlayState){
+
+                    base.fsHeight = Math.round((document.body.clientHeight - $parentContainer.find('.slide img').height()) / 2);
+
+                    jQuery('.slide').removeClass('landscapeMode').addClass('portraitMode');
+
+                    jQuery('.slide').css({
+                        'top': base.fsHeight
+                        //'height' : 'auto'
+
+                    });
+
+                    /*jQuery('.portraitMode img').css({
+                     'height': 'auto',
+                     'width': 'auto'
+
+                     });*/
+
+                    jQuery('.fsIcon').css({'top': window.innerHeight - 40 + 'px' });
+                    jQuery('.fsIndexCount').css({'top': window.innerHeight - 33 + 'px' });
+
+                    // var captionPos = ( $parentContainer.find('.slide').height() / 2 ) + $parentContainer.find('.slide').offset().top + 20
+
+                    var fsTop = window.innerHeight/2
+                    jQuery('.fsArrow').css({'top' : fsTop + 'px' });
+                    //  jQuery('.gallerycaption').css({ 'top' : jQuery('.slide img').height() + 5 + 'px', 'bottom' : 'none' })
+
+                }
+
+            }
+
+
+        },
+
+        publishIndexCount: function(index){
+            var base = this;
+            var currentIndex = index + 1;
+
+            jQuery('.fsIndexCount').find('strong').html(currentIndex);
+
+        }
+
+    });
+
+    return Gallery;
+}));
+
+
+/* MAIN TAB NAVIGATION */
+
+var MainTabs = {};
+
+MainTabs.Module = (function() {
+
+    var component = {};
+
+    component.buildTabControls = function() {
+
+        var base = this;
+        base.roundOne = true;
+
+        var h1, h2;
+
+        jQuery('ul.gallery-main-tabs li').on('click', 'a', function(event){
+            _gallery.tracking.trackMainTab(this);
+            h1 = h1 || jQuery('.gallery').height()
+            h2 = h2 || parseInt(jQuery.mobile.activePage.find('.container').css('min-height'))
+
+            base.handleTabs.apply(this, [h1, h2])
+
+        })
+
+        jQuery(window).on('orientationchange', function(event) {
+
+            /*
+             if (window.innerWidth > window.innerHeight) {
+             // landscape
+             jQuery('.gallery-wrapper').css({'height' : '100%'});
+             jQuery('.gallery-wrapper section').css({'height' : '' });
+             } else {
+
+             //jQuery('.gallery-wrapper').css({'height' : '100%'});
+             //jQuery('.gallery-wrapper section').css({'height' : '' });
+             }
+             */
+        })
+
+    }
+
+    component.handleTabs = function(h1, h2){
+        var base = this;
+        var ctrlGroup = jQuery('.control-wrapper');
+        var mainTabContainer = jQuery('.gallery-main-tabs');
+        var tabItems = mainTabContainer.find('a'),
+
+            selectedCtrl,
+            selectedItem = jQuery(this);
+
+        if(selectedItem.attr('data-content') === 'colorizer'){
+
+
+            /*if(window.innerWidth < window.innerHeight){
+
+             jQuery('.gallery-wrapper').css({'height' : h2 + 'px'});
+             jQuery('.gallery-wrapper section').css({'height' : h2 + 'px'});
+
+             }*/
+
+            jQuery('.color-swatch-outer-container').css('visibility', 'visible');
+            jQuery('.colorizer-desc').css('display', 'block');
+
+            if(base.roundOne !== null){
+
+                Gallery360.Module.initiate360();
+                Gallery360.Module.preload360(false);
+                base.roundOne = null;
+
+                //DTM link tracking
+                DATALAYER.linkTrack(selectedItem, {
+                    eVar70: "gallery-mobile",
+                    eVar75: "gallery-mobile:360",
+                    eVar68: "click",
+                    events: "event70"
+                });
+
+
+            }
+        } else {
+
+            /*if(window.innerWidth < window.innerHeight){
+
+             jQuery('.gallery-wrapper').css({'height' : h1 + 'px'});
+             jQuery('.gallery-wrapper section').css({'height' : h1 + 'px'});
+             }*/
+
+        }
+
+        if( selectedItem.attr('class') !== 'selected' ) {
+
+            var selectedTab = selectedItem.data('content'),
+                selectedContent = jQuery('.gallery-wrapper').find('section[data-content="'+selectedTab+'"]');
+
+            tabItems.removeClass('selected');
+            selectedItem.addClass('selected');
+
+            selectedContent.addClass('selected').siblings('section').removeClass('selected');
+            selectedCtrl = ctrlGroup.find('section[data-content="'+selectedTab+'"]');
+            selectedCtrl.addClass('selected').siblings('section').removeClass('selected');
+
+        }
+
+        jQuery('section[data-content="' + selectedTab + '"]').find('.thumbstrip').find('img[data-src]').each(function(){
+
+            LazyLoader.loadContent(this);
+        });
+
+        //tab height
+    }
+
+    return component;
+
+})();
+
+/* GALLERY TRACKING INSTANCE */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            './xbmod-helper',
+            './xbmod-gallery'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(
+            window.jQuery,
+            window.xbmod.Gallery
+        );
+    }
+}(function ($, Gallery) {
+    'use strict';
+
+    jQuery.extend(Gallery.prototype.options, {
+
+        // The querySelector of the thumbnail container:
+        // tabContainer: 'ul.gallery-main-tabs'
+    });
+
+    var buildControls = Gallery.prototype.buildControls;
+
+    jQuery.extend(Gallery.prototype, {
+
+        buildControls: function(){
+
+            buildControls.call(this);
+            this.initTracking();
+
+        },
+
+        initTracking: function(){
+
+            var base = this,
+                parentId = base.parentId,
+                parentSection = 'section#vlp-gallery-' + base.parentId,
+                a1 = 'gallery_mobile',
+                lcn = base.parentId;
+
+            jQuery(document).on('click', parentSection + ' .fsPrevArrow', function(){
+                linkTrack(a1, parentId + '_prev');
+            });
+
+            jQuery(document).on('click', parentSection + ' .fsNextArrow', function(){
+                linkTrack(a1, parentId + '_next');
+            });
+
+            var callbacks = {
+
+                // Callback function executed on slide change.
+                onslide: function (index, slide, swiped) {
+
+                    var a1 = 'swipe_gallery_mobile',
+                        lcn = base.parentId;
+
+                    if(swiped === true){
+
+                        if(base.options.direction === 1){
+                            lcn = lcn + '_prev_swipe';
+                        } else if( base.options.direction === -1){
+                            lcn = lcn + '_next_swipe';
+                        }
+                       // linkTrack(a1, lcn);
+                    }
+
+
+                },
+                onslideend: function (index, slide) {
+                    // Callback function executed after the slide change transition.
+                },
+                onslidecomplete: function (index, slide) {
+                    // Callback function executed on slide content load.
+                }
+            }
+
+            this.options = $.extend({}, this.options, callbacks);
+
+        },
+
+        trackThumb: function(index){
+            var base = this,
+                index = index + 1,
+                a1 = 'gallery_mobile',
+                lcn = base.parentId +  '_thumb_' + index;
+            linkTrack(a1, lcn);
+
+        },
+
+        trackColorThumb: function(dataclr){
+            var a1 = 'gallery_mobile',
+                lcn = 'colors_thumb_';
+            lcn = lcn + dataclr;
+            linkTrack(a1, lcn);
+        },
+
+        trackCaptionBtn: function(state){
+            var base = this,
+                a1 = 'gallery_mobile',
+                lcn = base.parentId + '_information_';
+            lcn = (state) ? lcn + 'open' : lcn + 'close';
+            linkTrack(a1, lcn);
+        },
+
+        trackFsBtn: function(state){
+            var a1 = 'gallery_mobile',
+                lcn = 'fullscreen_';
+            lcn = (!state) ? lcn + 'open' : lcn + 'close'
+            linkTrack(a1, lcn);
+        },
+
+        onTouchEnd: function(){
+            var a1 = 'swipe_gallery_mobile',
+                lcn = 'rotate_360';
+            linkTrack(a1, lcn);
+        }
+
+    });
+
+    return Gallery;
+}));
+
+
+/* GALLERY TABS TRACKING */
+
+var _gallery = {};
+_gallery.tracking = (function() {
+    var module = {},
+        tabItemContainer = $('.gallery-main-tabs'),
+        tabItem = tabItemContainer.children().find('a'),
+        parentId = 'section#vlp-gallery-',
+        a1 = 'gallery_mobile',
+        lcn;
+
+    module.publicVariable = 2;
+
+    module.trackMainTab = function(el) {
+
+        if ($(el).hasClass('selected') !== true) {
+            lcn = $(el).data('content');
+            if( lcn === 'colorizer') lcn = '360_colors';
+            //linkTrack(a1, lcn);
+        }
+
+    };
+
+    return module;
+
+})();
+
+//_gallery.tracking.trackMainTab();
