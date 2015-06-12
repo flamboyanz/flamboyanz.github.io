@@ -1,6 +1,7 @@
 /*
  * xbmod Gallery YouTube Video Factory JS 1.2.0
  */
+
 /* global define, window, document, YT */
 
 (function (factory) {
@@ -26,6 +27,9 @@
     // }
 
     $.extend(Gallery.prototype.options, {
+        videoPosterProperty: 'poster',
+        // The list object property (or data attribute) for the video sources array:
+        videoSourcesProperty: 'sources',
         // The list object property (or data attribute) with the YouTube video id:
         youTubeVideoIdProperty: 'youtube',
         // Optional object with parameters passed to the YouTube video player:
@@ -192,11 +196,15 @@
         YouTubePlayer: YouTubePlayer,
 
         textFactory: function (obj, callback) {
+
             var options = this.options,
                 videoId = this.getItemProperty(obj, options.youTubeVideoIdProperty);
             if (videoId) {
+
                 if (this.getItemProperty(obj, options.urlProperty) === undefined) {
+
                     obj[options.urlProperty] = '//www.youtube.com/watch?v=' + videoId;
+
                 }
                 if (this.getItemProperty(obj, options.videoPosterProperty) === undefined) {
                     obj[options.videoPosterProperty] = '//img.youtube.com/vi/' + videoId +

@@ -9,7 +9,7 @@
  * https://github.com/bradbirdsall/Swipe
  *
  * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
+ * http://www.open1147.org/licenses/MIT
  */
 
 /* global define, window, document, DocumentTouch */
@@ -191,7 +191,7 @@
             closeOnSlideClick: false,
             closeOnSwipeUpOrDown: false,
             disableScroll: false,
-            startSlideshow: true
+            startSlideshow: false
         },
 
         console: window.console && typeof window.console.log === 'function' ?
@@ -940,6 +940,7 @@
         },
 
         imageFactory: function (obj, callback) {
+
             var that = this,
                 img = this.imagePrototype.cloneNode(false),
                 url = obj,
@@ -995,11 +996,14 @@
         },
 
         createElement: function (obj, callback) {
-            var type = obj && this.getItemProperty(obj, this.options.typeProperty),
-                factory = (type && this[type.split('/')[0] + 'Factory']) ||
-                    this.imageFactory,
-                element = obj && factory.call(this, obj, callback);
+
+            var type = obj && this.getItemProperty(obj, this.options.typeProperty);
+            
+            var factory = (type && this[type.split('/')[0] + 'Factory']) ||
+                    this.imageFactory;
+            var element = obj && factory.call(this, obj, callback);
             if (!element) {
+
                 element = this.elementPrototype.cloneNode(false);
                 this.setTimeout(callback, [{
                     type: 'error',
@@ -1016,8 +1020,10 @@
                     this.elements[index] = $(this.slides[index])
                         .hasClass(this.options.slideErrorClass) ? 3 : 2;
                 } else {
+
                     this.elements[index] = 1; // Loading
                     $(this.slides[index]).addClass(this.options.slideLoadingClass);
+
                     this.slides[index].appendChild(this.createElement(
                         this.list[index],
                         this.proxyListener
@@ -1138,6 +1144,7 @@
         },
 
         getNestedProperty: function (obj, property) {
+            
             property.replace(
                 // Matches native JavaScript notation in a String,
                 // e.g. '["doubleQuoteProp"].dotProp[2]'
@@ -1170,6 +1177,7 @@
         },
 
         getItemProperty: function (obj, property) {
+            
             var prop = obj[property];
             if (prop === undefined) {
                 prop = this.getDataProperty(obj, property);

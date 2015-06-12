@@ -200,6 +200,7 @@
         YouTubePlayer: YouTubePlayer,
 
         textFactory: function (obj, callback) {
+
             var options = this.options,
                 videoId = this.getItemProperty(obj, options.youTubeVideoIdProperty);
             if (videoId) {
@@ -210,6 +211,7 @@
                     obj[options.videoPosterProperty] = '//img.youtube.com/vi/' + videoId +
                         '/maxresdefault.jpg';
                 }
+
                 return this.videoFactory(
                     obj,
                     callback,

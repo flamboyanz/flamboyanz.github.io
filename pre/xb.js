@@ -227,8 +227,6 @@
 
         this.initOptions(options);
 
-        console.log('POP')
-
         this.initialize();
     }
 
@@ -1142,7 +1140,7 @@
             if (this.options.unloadElements) {
                 this.unloadElements(index);
             }
-            this.setTitle(index);
+           // this.setTitle(index);
         },
 
         onslide: function (index, check) {
@@ -1276,7 +1274,11 @@
 
         createElement: function (obj, callback) {
 
-            var type = obj && this.getItemProperty(obj, 'data-src');
+            if(obj.nodeType == 1){
+                var type = obj && this.getItemProperty(obj, 'data-src');
+            } else {
+                var type = obj && this.getItemProperty(obj, this.options.typeProperty);
+            }
 
             var factory = (type && this[type.split('/')[0] + 'Factory']) || this.imageFactory,
                 element = obj && factory.call(this, obj, callback);
@@ -1294,7 +1296,6 @@
 
         loadElement: function (index) {
 
-
             if (!this.elements[index]) {
 
                 if (this.slides[index].children[1]) {
@@ -1306,18 +1307,26 @@
                     this.elements[index] = 1; // Loading
                     $(this.slides[index]).addClass(this.options.slideLoadingClass);
 
-                    var insertNode = this.list[index].children[0];
-                    var captionNode = this.slides[index].children[0];
+                    if(this.list[index].children !== undefined){
+                        var insertNode = this.list[index].children[0];
+                        var captionNode = this.slides[index].children[0];
 
-                    /*this.slides[index].appendChild(this.createElement(
-                     this.list[index].children[0],
-                     this.proxyListener
-                     ));*/
+                        this.slides[index].insertBefore(this.createElement(
+                            insertNode,
+                            this.proxyListener
+                        ), captionNode)
 
-                    this.slides[index].insertBefore(this.createElement(
-                        insertNode,
-                        this.proxyListener
-                    ), captionNode)
+                    } else {
+                        console.log('yeah')
+                        this.slides[index].appendChild(this.createElement(
+                         this.list[index],
+                         this.proxyListener
+                         ));
+                    }
+
+
+
+
 
 
 
@@ -1461,6 +1470,7 @@
         },
 
         getNestedProperty: function (obj, property) {
+            console.log(property)
             property.replace(
                 // Matches native JavaScript notation in a String,
                 // e.g. '["doubleQuoteProp"].dotProp[2]'
@@ -1493,6 +1503,7 @@
         },
 
         getItemProperty: function (obj, property) {
+
             var prop = obj[property];
             if (prop === undefined) {
                 prop = this.getDataProperty(obj, property);
@@ -1504,6 +1515,7 @@
         },
 
         initStartIndex: function () {
+
             var index = this.options.index,
                 urlProperty = this.options.urlProperty,
                 i;
@@ -1639,7 +1651,12 @@
             this.container[0].style.display = 'block';
 
             this.initSlides();
-            this.initCaptions();
+
+            if(this.list[0].children !== undefined){
+                this.initCaptions();
+            } else {
+
+            }
 
             this.buildControls();
             this.container.addClass(this.options.displayClass);
@@ -1740,6 +1757,7 @@ MainTabs.Module = (function() {
             selectedItem = jQuery(this);
 
         if(selectedItem.attr('data-content') === 'colorizer'){
+
 
             /*if(window.innerWidth < window.innerHeight){
 
@@ -2850,117 +2868,3 @@ _gallery.tracking = (function() {
 })();
 
 //_gallery.tracking.trackMainTab();
-
-;(function( $, document ){
-    /*
-     <div class="item-type-video" data-youtube-id="YOUTUBE-VIDEO-ID"></div>
-     */
-    if (!Object.create) { Object.create = function (o) { if (arguments.length > 1) { throw new Error('Object.create implementation only accepts the first parameter.'); } function F() {} F.prototype = o; return new F(); }; }
-
-    var youtubeTag = document.createElement('script');
-    youtubeTag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(youtubeTag, firstScriptTag);
-
-    var ntzYoutubeEmbed = {
-        init: function( el ){
-            var $this = this;
-            $this.el = $( el );
-
-            var ytTimer = window.setInterval(function(){
-                if( typeof YT == 'object' && typeof YT.Player == 'function' ){
-                    window.clearInterval( ytTimer );
-                    $this.YTApiReady();
-                }
-            }, 10);
-        } // init
-
-
-        ,YTApiReady: function(){
-            var $this = this;
-            this.movieContainerID = 'video-' + Math.round( Math.random() * 1000000 );
-
-            $('<div class="youtube-iframe" />').attr({
-                'id': this.movieContainerID
-            }).appendTo( $this.el );
-
-            $this.createPlayer();
-
-            this.el.on('player-pause', function(){ $this.player.pauseVideo(); });
-            this.el.on('player-stop', function(){ $this.player.seekTo(0); $this.player.stopVideo(); });
-            this.el.on('player-play', function(){ $this.player.playVideo(); });
-
-            this.el.on('player-toggle-state', function(){
-                var player = $this.player,
-                    state = player.getPlayerState();
-
-                if( state == 1 ){
-                    player.pauseVideo();
-                }
-
-                if( state == 2 ){
-                    player.playVideo();
-                }
-            });
-        }//YTApiReady
-
-
-        ,createPlayer: function(){
-            var $this = this;
-
-            var playerVars = $.extend({
-                enablejsapi   : 1,
-                autohide      : 2,
-                iv_load_policy: 3,
-                modestbranding: true,
-                origin        : window.location.origin,
-                rel           : 0,
-                showinfo      : 0,
-                theme         : 'light',
-                color         : 'white',
-                controls      : 0,
-                autoplay      : 0,
-                poster        : ""
-            }, $this.el.data() );
-
-            if( playerVars.poster ){
-                var poster = $('<img class="player-poster" />').attr('src', playerVars.poster );
-                poster.appendTo( $this.el );
-                $this.el.addClass('player-has-poster');
-                poster.on('click', function(){
-                    $(this).addClass('is-playing');
-                    $this.el.trigger('player-play');
-                });
-            }
-
-            this.player = new YT.Player( this.movieContainerID, {
-                height    : '100%',
-                width     : '100%',
-                videoId   : this.el.data('youtube-id'),
-                playerVars: playerVars,
-                events    : {
-                    'onReady'      : $.proxy( $this.movieReady, $this ),
-                    'onStateChange': $.proxy( $this.stateChange, $this )
-                }
-            });
-        }//createPlayer
-
-
-        ,movieReady: function( player ){
-            this.el.data('youtubePlayer', player.target ).trigger( 'player-ready', player );
-        }//movieReady
-
-
-        ,stateChange: function( state ){
-            this.el.data('video-state', state).trigger('player-state-change', state);
-        }//stateChange
-    };
-
-
-    $.fn.ntzYoutubeEmbed = function() {
-        return this.each(function(){
-            var obj = Object.create( ntzYoutubeEmbed );
-            obj.init( this );
-        });
-    };
-})( jQuery, document );
