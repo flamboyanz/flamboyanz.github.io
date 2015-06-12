@@ -764,3 +764,20 @@ p.checkmark{ background: transparent url("/crossbrand/en/mobile/images/common/ga
 
 /* Temp fix added to fix $ overlap on VLP page on test and uat only */
 .page-vlp .vehicleInfo .priceMPG .value sup{ left: 1px; }
+
+.slide > .video-content:not(.video-loading) > a {
+    background-image: url('video-play.svg');
+}
+
+.slide > .video-content > a {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    margin: -64px auto 0;
+    width: 128px;
+    height: 128px;
+    background: url('video-play.svg') center no-repeat;
+    opacity: 0.8;
+    cursor: pointer;
+}
