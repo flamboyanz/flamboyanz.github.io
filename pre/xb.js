@@ -2176,8 +2176,8 @@ MainTabs.Module = (function() {
     'use strict';
 
     jQuery.extend(Gallery.prototype.options, {
-        // The querySelector of the thumbnail container:
-        // tabContainer: 'ul.gallery-main-tabs'
+        // Defines if the gallery should open in fullscreen mode:
+        fullScreen: false
     });
 
     var buildControls = Gallery.prototype.buildControls;
