@@ -56,7 +56,7 @@ function Swipe(container, options) {
         // determine width of each slide
         width = container.getBoundingClientRect().width || container.offsetWidth;
 
-        element.style.width = (slides.length * width) + 'px';
+        /*element.style.width = (slides.length * width) + 'px';
 
         // stack elements
         var pos = slides.length;
@@ -82,72 +82,8 @@ function Swipe(container, options) {
 
         if (!browser.transitions) element.style.left = (index * -width) + 'px';
 
-        container.style.visibility = 'visible';
+        container.style.visibility = 'visible';*/
 
-    }
-
-    function prev() {
-
-        if (options.continuous) slide(index-1);
-        else if (index) slide(index-1);
-
-    }
-
-    function next() {
-
-        if (options.continuous) slide(index+1);
-        else if (index < slides.length - 1) slide(index+1);
-
-    }
-
-    function circle(index) {
-
-        // a simple positive modulo using slides.length
-        return (slides.length + (index % slides.length)) % slides.length;
-
-    }
-
-    function slide(to, slideSpeed) {
-
-        // do nothing if already on requested slide
-        if (index == to) return;
-
-        if (browser.transitions) {
-
-            var direction = Math.abs(index-to) / (index-to); // 1: backward, -1: forward
-
-            // get the actual position of the slide
-            if (options.continuous) {
-                var natural_direction = direction;
-                direction = -slidePos[circle(to)] / width;
-
-                // if going forward but to < index, use to = slides.length + to
-                // if going backward but to > index, use to = -slides.length + to
-                if (direction !== natural_direction) to =  -direction * slides.length + to;
-
-            }
-
-            var diff = Math.abs(index-to) - 1;
-
-            // move all the slides between index and to in the right direction
-            while (diff--) move( circle((to > index ? to : index) - diff - 1), width * direction, 0);
-
-            to = circle(to);
-
-            move(index, width * direction, slideSpeed || speed);
-            move(to, 0, slideSpeed || speed);
-
-            if (options.continuous) move(circle(to - direction), -(width * direction), 0); // we need to get the next in place
-
-        } else {
-
-            to = circle(to);
-            animate(index * -width, to * -width, slideSpeed || speed);
-            //no fallback for a circular continuous if the browser does not accept transitions
-        }
-
-        index = to;
-        offloadFn(options.callback && options.callback(index, slides[index]));
     }
 
     function move(index, dist, speed) {
@@ -175,41 +111,6 @@ function Swipe(container, options) {
         style.msTransform =
             style.MozTransform =
                 style.OTransform = 'translateX(' + dist + 'px)';
-
-    }
-
-    function animate(from, to, speed) {
-
-        // if not an animation, just reposition
-        if (!speed) {
-
-            element.style.left = to + 'px';
-            return;
-
-        }
-
-        var start = +new Date;
-
-        var timer = setInterval(function() {
-
-            var timeElap = +new Date - start;
-
-            if (timeElap > speed) {
-
-                element.style.left = to + 'px';
-
-                if (delay) begin();
-
-                options.transitionEnd && options.transitionEnd.call(event, index, slides[index]);
-
-                clearInterval(timer);
-                return;
-
-            }
-
-            element.style.left = (( (to - from) * (Math.floor((timeElap / speed) * 100) / 100) ) + from) + 'px';
-
-        }, 4);
 
     }
 
@@ -438,9 +339,6 @@ function Swipe(container, options) {
     // trigger setup
     setup();
 
-    // start auto slideshow if applicable
-    if (delay) begin();
-
 
     // add event listeners
     if (browser.addEventListener) {
@@ -457,11 +355,11 @@ function Swipe(container, options) {
         }
 
         // set resize event on window
-        window.addEventListener('resize', events, false);
+        //window.addEventListener('resize', events, false);
 
     } else {
 
-        window.onresize = function () { setup() }; // to play nice with old IE
+        //window.onresize = function () { setup() }; // to play nice with old IE
 
     }
 

@@ -25,6 +25,7 @@
                 <section data-content="exterior" id="vlp-gallery-exterior" class="selected">
                     <div class="gallery carousel">
                         <div class="item">
+                            <!--<div id="my-embed" style="width:640px;height:360px;" data-youtube-id="PSX2iTnN4hg"></div>-->
                             <img alt="" data-src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Exterior/mobile-large/2015_300sc_gallery_ext_01.jpg" data-trigger="none" src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Exterior/mobile-large/2015_300sc_gallery_ext_01.jpg"><p>The 2015 Chrysler 300S includes a black chrome grille surround, black headlamp bezels and LED fog lamps. Shown in Redline Tri-Coat Pearl.</p>
                         </div>
                         <div class="item">
@@ -104,6 +105,19 @@
                     </div>
                 </section>
 
+                <section data-content="video" id="vlp-gallery-video">
+                    <div class="gallery carousel">
+                       <!-- <div class="item">
+                            &lt;!&ndash;<div id="my-embed" style="width:640px;height:360px;" data-youtube-id="PSX2iTnN4hg"></div>&ndash;&gt;
+                            <img alt="" data-src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Exterior/mobile-large/2015_300sc_gallery_ext_01.jpg" data-trigger="none" src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Exterior/mobile-large/2015_300sc_gallery_ext_01.jpg"><p>The 2015 Chrysler 300S includes a black chrome grille surround, black headlamp bezels and LED fog lamps. Shown in Redline Tri-Coat Pearl.</p>
+                        </div>
+                        <div class="item">
+                            <img alt="" data-src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Interior/mobile-large/2015_300c_gallery_int_14.jpg" data-trigger="none" src="http://m.chrysler.com/assets/images/blank.gif"><p>The 2015 Chrysler 300C Platinum features a class-exclusive eight-speed automatic transmission<sup class="tooltip" title="Based on the latest competitive information and FCA US LLC Upper Large Car Segmentation.">+</sup> with the new, class-exclusive Rotary E-shift<sup class="tooltip" title="Based on the latest competitive information and FCA US LLC Upper Large Car Segmentation.">+</sup>.</p>
+                        </div>-->
+
+                    </div>
+                </section>
+
             </div>
 
             <nav>
@@ -113,6 +127,9 @@
                     </li>
                     <li>
                         <a href="#0" data-content="interior">Interior</a>
+                    </li>
+                    <li>
+                        <a href="#0" data-content="video">Video</a>
                     </li>
                     <li>
                         <a href="#0" data-content="colorizer">360 Color</a>
@@ -183,6 +200,19 @@
                     </div>
                 </section>
 
+                <section data-content="video" class="ctrl-gallery">
+                    <div class="thumbstrip-wrapper">
+                        <div class="thumbstrip">
+                            <div class="thumb">
+                                <img alt="" src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Exterior/mobile-thumb/2015_300sc_gallery_ext_01.jpg">
+                            </div>
+                            <div class="thumb">
+                                <img alt="" data-src="http://m.chrysler.com/assets/images/Vehicles/2015/300/Overview/Gallery/Interior/mobile-thumb/2015_300c_gallery_int_14.jpg" data-trigger="none" src="http://m.chrysler.com/assets/images/blank.gif">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </main>
     </div>
@@ -193,6 +223,7 @@
 <script src="mGlobal.touchSwipe.min.js"></script>
 
 <script src="xb.js"></script>
+<script src="xbmod-gallery-youtube.js"></script>
 <!--<script src="script.js"></script>-->
 
 <script type="text/javascript">
@@ -211,6 +242,14 @@
                 }
         );
 
+        /*xbmod.Gallery(
+                document.querySelector('#vlp-gallery-video .gallery').querySelectorAll('div'),
+                {
+                    container: '#vlp-gallery-video .gallery',
+                    carousel: true
+                }
+        );*/
+
         xbmod.Gallery(
                 document.querySelector('#vlp-gallery-interior .gallery').querySelectorAll('div'),
                 {
@@ -218,6 +257,24 @@
                     carousel: true
                 }
         );
+
+        xbmod.Gallery([
+            {
+                title: 'LES TWINS - An Industry Ahead',
+                type: 'text/html',
+                youtube: 'jnxn-vZM-Lg',
+                poster: 'http://img.youtube.com/vi/jnxn-vZM-Lg/0.jpg'
+            },
+            {
+                title: 'KN1GHT - Last Moon',
+                type: 'text/html',
+                youtube: '8YQChdbPXJ0',
+                poster: 'http://img.youtube.com/vi/8YQChdbPXJ0/0.jpg'
+            }
+        ], {
+            container: '#vlp-gallery-video',
+            carousel: true
+        });
 
        /* window.mySwipe = new Swipe(
                 document.querySelector('.gallery')
