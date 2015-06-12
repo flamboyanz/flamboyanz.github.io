@@ -1648,6 +1648,8 @@
                 this.bodyOverflowStyle = document.body.style.overflow;
                 document.body.style.overflow = 'hidden';
             }
+
+            console.log(this.container[0])
             this.container[0].style.display = 'block';
 
             this.initSlides();
