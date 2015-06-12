@@ -1,7 +1,6 @@
 /*
  * xbmod Gallery YouTube Video Factory JS 1.2.0
  */
-
 /* global define, window, document, YT */
 
 (function (factory) {
