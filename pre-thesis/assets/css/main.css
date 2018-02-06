@@ -3278,6 +3278,7 @@
 		}
 
 		.banner.style1 .image {
+			background: #000;
 			-moz-flex-grow: 0;
 			-webkit-flex-grow: 0;
 			-ms-flex-grow: 0;
