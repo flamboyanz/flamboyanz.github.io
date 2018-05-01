@@ -127,6 +127,70 @@
 			</div>
 		</section>
 
+		<!-- Final Project -->
+		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" id="final-project">
+
+			<div class="image">
+				<img src="images/image1.jpg" alt="" />
+			</div>
+			<div class="content">
+				<h2>City Wide Congested Corridors Project</h2>
+				<p>In New York City, whether you commute by train, bus, or car, it seems like traffic is inevitable and no matter which route you look at. According to the new study by <a herf="http://inrix.com/scorecard/">INRIX Global Traffic Scorecard</a>, a data company dedicated to transportation and car services, New York City is the third most congested city in the world in terms of traffic and the second worst in the United States in the year 2017.</p>
+
+				<p>INRIX reports that on average, driver waste 118 hours per year in congestion on the 4.7 mile stretch— an increase of 37 percent from the previous year. Additionally, New York drivers spent 13 percent of their time sitting in congestion, with 11 percent of that being attributed to daytime traffic. </p>
+
+				<p>The study also highlights that New York is home to four of the 10 most congested roadways in the U.S. The Cross-Bronx Expressway (I-95) topped that list for the third straight year. The other corridors that made the list for worst in the country include East 34th Street from FDR Drive to Fifth Avenue, Belt Parkway East from exit 3 to exit 17, and East 42nd Street from FDR Drive to Seventh Avenue.</p>
+
+				<p>INRIX study found that the traffic cost New York City nearly $34 billion last year — nearly $3,000 per driver — in wasted time, fuel and traffic-related fees. That's the biggest economic toll of any U.S. city by far.</p>
+
+				<p>After going through this report, I was curious to explore some of these corridors and understand what could be the cause for this magnitude of traffic in these particular areas. I started collecting and analyzing publicly available transportation dataset by the city government and ride hailing companies.</p>
+
+				<p>With city taxis as the major contributor to the traffic wows, I was interested to figure out what are some of the key factors that impacted the congestion, like where those taxi trips are coming from, where they concentrated during peak hours. If those new trips were originating in central and lower Manhattan, the region’s congested core. What about the traffic congestions in the outer boroughs? Which street intersections suffered most congestions in the five boroughs.</p>
+
+				<p>
+					The primary source for the research was the dataset released by the New York City Taxi & Limousine Commission (TLC). The TLC dataset has captured a staggering 1.1 billion individual taxi trips in the city from January 2009 through June 2015. Its highly detailed and more than just a vast list of taxi pickup and drop off coordinates. It captured several other fields ranging from trip distance, fare amount, taxi zone location, payment type and city tax collected per trip.
+				</p>
+
+				<p>
+					For the further analysis of the TLC data, I used the Goole BigQuery tool. It’s a quite useful tool when it comes to querying a massive datasets like the TLC data. BigQuery is a cloud based data warehouse tool that helps query large datasets with fast SQL queries by running a web query or making calls to their REST API.
+				</p>
+
+				<p>
+					I was interested to map the coordinates of the trip data in a 3D map and simulate the taxi trails as paths and vertices rendered in motion. I wanted to build a map and project it with 3D buildings and extrusions to display the building heights in the neighborhood. It would enhance the richness of the trail motions and also help get a real-time sense of the moving traffic in a 3D perspective. 
+				</p>
+
+				<p>
+					I filtered the dataset for yellow and green cabs, and combined it with FHV (For Hire Vehicles) data. I tested with different time scales to come up with the right epoch suitable for the motion trail and optimized for better performance. I extracted the dataset for the trips taken from June 16, 2016 21:00 to 21:30. I also added the timeline loop for the motion animation.
+				</p>
+
+				<p>
+					I used Mapbox, an open source JavaScript library to create custom designed maps and add rich interactivity through multiple layers superimposed on it. I downloaded the building geometry data of lower Manhattan from OpenStreetMap, another open data source useful for mapping information. I also used React.js library and JavaScript ES6 features to build the front-end components and add user interactions.
+				</p>
+
+				<p>
+					I used Mapbox’s FlyToInterpolator API to navigate to the busiest intersections, and the busiest streets can be inferred from the intersections.
+				</p>
+
+				<p>
+					The congestion also has a huge price on the economy of the city. Traffic congestion will be a $100 billion drag on the New York metro area economy over the next five years unless something is done to discourage cars and trucks from crowding the streets and highways of the region during the busiest times of the day, according to another study conducted by HDR for the Partnership for New York City. 
+				</p>
+
+				<p>Visualizing a 3D map in this case would help effectively identify several key factors affecting the congestions:</p>
+
+				<ol>
+					<li>Examine current and future transportation conditions.</li>
+					<li>Identify existing and future corridor for traffic congestions, and their impacts on the surrounding neighborhood.</li>
+					<li></li>Reduce the time needed to travel to and within the corridor.</li>
+					<li>Improve safety and mobility for pedestrians, cyclists, transit users and motorists.</li>
+					<li>Assess parking and safety issues in these zones.</li>
+					<li>Collect live ridership data and intermodal connections.</li>
+				</ol>
+
+				<p>The research company published this study amid a statewide debate over a congestion pricing scheme for New York City. A commission impaneled by the government recommended tolling cars to enter Manhattan below 60th Street, along with other measures, to improve traffic in the city's center and fund repairs to the subway system.</p>
+
+			</div>
+		</section>
+
 		<footer class="wrapper style1 align-center">
 			<div class="inner">
 				<ul class="icons">
