@@ -1,11 +1,14 @@
-.wrapper{
+.wrapper {
     width: 960px;
-
-    
 }
 
 .wrapper section {
     width: 600px;
+}
+
+section blockquote {
+    font-weight: normal;
+    font-style: normal;
 }
 
 img
