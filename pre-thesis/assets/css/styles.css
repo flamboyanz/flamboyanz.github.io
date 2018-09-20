@@ -1,0 +1,12 @@
+.banner.style1.image-position-right .image{
+
+    /*background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+                  url("../../images/Deep-learning_v2.jpg");*/
+    background: #000 url("../../images/deep-learn.jpg") no-repeat center center fixed;
+
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: 100%; 
+  background-position: 0 0;
+    background-origin: content-box;
+}
