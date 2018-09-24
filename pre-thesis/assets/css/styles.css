@@ -10,3 +10,8 @@
   background-position: 0 0;
     background-origin: content-box;
 }
+
+h1 {
+  font-size: 3.0rem;
+  line-height: 1.2;
+}
