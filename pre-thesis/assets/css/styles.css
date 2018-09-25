@@ -1,17 +1,51 @@
-.banner.style1.image-position-right .image{
+.banner.style1.image-position-right .image {
 
-    /*background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+  /*background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
                   url("../../images/Deep-learning_v2.jpg");*/
-    background: #000 url("../../images/deep-learn.jpg") no-repeat center center fixed;
+  background: #000 url("../../images/deep-learn.jpg") no-repeat center center fixed;
 
-    -webkit-background-size: cover;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
-  background-size: 100%; 
+  background-size: 100%;
   background-position: 0 0;
-    background-origin: content-box;
+  background-origin: content-box;
+}
+
+@media screen and (max-width: 1680px) {
+.spotlight.style1 .content {
+    padding: 0rem 2rem 3rem 1rem;
+}
+
+@media screen and (max-width: 1680px) {
+.wrapper.style1 > .inner {
+    padding: 1.5rem 1rem .5rem .5rem;
+}
+
+.index > * {
+  padding: 2.5rem 0 1rem 0;
 }
 
 h1 {
   font-size: 3.0rem;
   line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3{
+  clear: both;
+}
+
+.inner h3.left-title{
+  float: left;
+}
+
+.center{
+  text-align: center;
+}
+
+p {
+  margin: 0 0 1rem 0;
 }
