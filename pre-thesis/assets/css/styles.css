@@ -29,11 +29,14 @@
   padding: 0;
 }
 
+.style1 .inner .content p, .style1 .inner .content ul { 
+  font-size: 90%;
+}
+
 @media screen and (max-width: 1680px) {
 .spotlight.style1 .content {
     padding: 0;
 }
-
 
 h1 {
   font-size: 3.0rem;
