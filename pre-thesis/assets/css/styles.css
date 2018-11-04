@@ -10,36 +10,34 @@
   background-origin: content-box;
 }
 
-.wrapper.style1 > .inner{
+.wrapper.style1>.inner {
   padding: 0;
 }
 
-.wrapper.style1 > .inner {
+.wrapper.style1>.inner {
   padding: 1em 1rem .5rem .5rem;
 }
 
-@media screen and (max-width: 1680px) {
-  
-}
+@media screen and (max-width: 1680px) {}
 
-.index > * {
+.index>* {
   padding: 2em 1em 2em 0;
 }
 
-.spotlight{
+.spotlight {
   padding-top: 50px;
 }
 
-.style1 .inner p, .style1 .inner ul { 
+.style1 .inner p,
+.style1 .inner ul {
   font-size: 90%;
 }
 
-@media screen and (max-width: 1680px) {
-}
+@media screen and (max-width: 1680px) {}
 
 
 .spotlight.style1 .content {
-    padding: 0;
+  padding: 0;
 }
 
 h1 {
@@ -52,7 +50,7 @@ h2 {
   margin: 0;
 }
 
-h3{
+h3 {
   clear: both;
 }
 
@@ -70,40 +68,64 @@ p {
 
 /************************/
 
-.dark-blue{ width: 100%; /*background-color: #2A457A;*/ }
-.light-blue{ width: 100%; /*background-color: #099DD9;*/ }
-.green {width: 100%; /*background-color: #0C8542;*/}
-.red { width: 100%; /*background-color: #EC1D3B;*/ }
-.orange{ width: 100%; /*background-color: #F79420;*/ }
+.dark-blue {
+  width: 100%;
+  /*background-color: #2A457A;*/
+}
 
-.tire {  
+.light-blue {
+  width: 100%;
+  /*background-color: #099DD9;*/
+}
+
+.green {
+  width: 100%;
+  /*background-color: #0C8542;*/
+}
+
+.red {
+  width: 100%;
+  /*background-color: #EC1D3B;*/
+}
+
+.orange {
+  width: 100%;
+  /*background-color: #F79420;*/
+}
+
+.tire {
   display: flex;
   flex-wrap: wrap;
-  width: 100%; 
+  width: 100%;
   min-height: 150px;
 }
 
-@media screen and (min-width: 550px){
-  .light-blue, .green{
+@media screen and (min-width: 550px) {
+
+  .light-blue,
+  .green {
     flex-wrap: wrap;
     width: 50%;
-    
+
   }
 }
+
 @media screen and (min-width: 800px) {
-  .red{
-    width:65%
+  .red {
+    width: 65%
   }
-  .orange{
-    width:35%;
+
+  .orange {
+    width: 35%;
   }
 }
 
-.dialogic{
-  height: 60px;;
+.dialogic {
+  height: 60px;
+  ;
 }
 
-.dialogic h4 { 
+.dialogic h4 {
   padding: 15px;
 }
 
@@ -118,8 +140,9 @@ p {
   flex-direction: row;
 }
 
-h4.pre{
-  width:auto; float: left;
+h4.pre {
+  width: auto;
+  float: left;
 }
 
 .citation {
@@ -130,7 +153,8 @@ h4.pre{
   margin: 0 0 1rem 0;
   padding: 0.5rem 0 0.5rem 2rem;
 }
-.citation cite { 
+
+.citation cite {
   font-style: italic
 }
 
