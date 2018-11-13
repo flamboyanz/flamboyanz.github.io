@@ -1,0 +1,59 @@
+body {
+    margin: 20px;
+  }
+  .input-div {
+    padding: 5px;
+    font-family: monospace;
+  }
+  a {
+    color: blue;
+  }
+
+  p {
+    width: 500px;
+  }
+
+  #status {
+    margin-top: 30px;
+    font-size: 20px;
+  }
+  .pred-container {
+    margin-bottom: 20px;
+  }
+  .pred-container > div {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+  }
+  .row {
+    display: table-row;
+  }
+  .cell {
+    display: table-cell;
+    padding-right: 20px;
+  }
+
+.image-box {
+	width: 250px;
+	height: 100%;
+}
+
+.image-box img {
+	width: 240px;
+	height: 100%;
+}
+
+.table {
+
+}
+
+.table .row:nth-child(odd) {
+    
+}
+
+.table .row .cell:first-child {
+    width: 260px;
+}
+.table .row .cell:last-child {
+    /*background-color: lightcyan;*/
+}
