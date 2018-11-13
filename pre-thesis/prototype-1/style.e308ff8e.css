@@ -19,12 +19,15 @@ body {
   }
   .pred-container {
     margin-bottom: 20px;
+    width: 50%;
   }
   .pred-container > div {
     display: inline-block;
     margin-right: 20px;
     vertical-align: top;
   }
+
+  
   .row {
     display: table-row;
   }
