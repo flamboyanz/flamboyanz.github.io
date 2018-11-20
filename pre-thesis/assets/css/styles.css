@@ -15,13 +15,13 @@
 }
 
 .wrapper.style1>.inner {
-  padding: 1em 1rem .5rem .5rem;
+  padding: 1em .5rem .5rem .5rem;
 }
 
 @media screen and (max-width: 1680px) {}
 
 .index>* {
-  padding: 2em 1em 2em 0;
+  padding: 2em 0em 2em 0;
 }
 
 .spotlight {
@@ -93,6 +93,11 @@ p {
   /*background-color: #F79420;*/
 }
 
+.violet{
+  width: 100%;
+  /*background-color: violet;*/
+}
+
 .tire {
   display: flex;
   flex-wrap: wrap;
@@ -117,6 +122,10 @@ p {
 
   .orange {
     width: 35%;
+  }
+
+  .violet{
+    width: 33%;
   }
 }
 
@@ -172,4 +181,17 @@ h4.pre {
   /*margin-top: -12px;*/
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+dl {
+  margin: 0 0 2rem 0;
+  font-size: 90%;
+}
+blockquote  {
+  font-size: 90%;
+}
+
+blockquote strong {
+  font-style: normal;
+  font-weight: 400;
 }
