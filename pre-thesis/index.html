@@ -142,9 +142,50 @@
 									<li>Do you think visualizing the way neural network learns from the data would help data scientists design effective deep learning models?</li>
 									<li>Would you consider using a visualizer tool for understanding, debugging, and refining model?</li>
 									<li>Do you think integrating machine learning development with interactive visualization would improve the performance and robustness of deep learning models?</li>
+									<li>Would incorporating human knowledge in the training process of neural network improve the robustness of the deep learning models?</li>
 								</ul>
 							</div>
 						</div>
+
+						<di class="tire">
+							<div class="light-blue">
+								<h5>Expert Interview with Alberto Maria Chieric</h5>
+								<dl>
+									<dt><strong>Q1: When working with the ML models, what type of questions concerns you most? whether you trust your model? Will it perform well? Will it work in deployment?</strong></dt>
+									<dd>Alberto: questions that concern me: is this model the best I can do given my current data, time, and resources constraints? E.g., I cannot access or pay a GPUs EC2 instance for running a CNN or I need a result tomorrow and I know perfectly how to use a logistic regression but I would need to do some more study and trial & error for applying deep learning even if I keep reading about DL providing far better results than log reg. Also, can I deploy it already in my current architecture or will it require me re-engineering a substantial slice of production code?</dd>
+								</dl>
+								<dl>
+									<dt><strong>Q2.What deep learning model have you used recently?</strong></dt>
+									<dd>Alberto: in September I played with an RNN and a CNN in a tutorial to learn about seq2seq models for NLP and dialogue systems.</dd>
+								</dl>
+								<dl>
+									<dt><strong>Q3: Do you feel the need to examine the structure of the deep learning model that you work on?</strong></dt>
+									<dd>Alberto: yes, I do. E.g., I want to be able to come up with a strategy on how to architect the NN without going through an immense number of trials and errors. Rather, finding a rationale on why shall I chose N layers, what size each layers, what activation fn's ...etc.</dd>
+								</dl>
+								<dl>
+									<dt><strong>Q4: Do you think visualizing how neural network performs its task, would give better insight for data scientists in building effective deep learning models?</strong></dt>
+									<dd>Alberto: Yes, I believe so. E.g. if you can visualize the relative value of weights passing through neurons, and I see many times some neurons receive weights near 0, I can make a reasonable choice to eliminate a number of neurons, or to dig deeper into the neurons that get significant different than 0 weights to find out why.</dd>
+								</dl>
+								<dl>
+									<dt><strong>Q5: Do you think visualization can assist in the effective selection of network structure, parameter selection and other optimizations?</strong></dt>
+									<dd>Alberto: Intuitively I would agree because I am a visual person. However, I'm also very impatient and if I don't get a viz immediately, I tend to abandon it. E.g., I hate plots when they don't put axis labels - how am I supposed to read the plot? If it takes me more than 10-15 seconds to get it, I usually leave it. Also, it depends what exactly is visualized and my knowledge of the model. E.g., visualizing useless nodes may be helpful, also visualizing convoluted layers and what they represent in one model with N convoluted layers  vs a model with K convoluted layers.</dd>
+								</dl>
+								<dl>
+									<dt><strong>Q6: With the growing complexity of AI models, do you think the critical need for understanding their inner-workings has increased?</strong></dt>
+									<dd>Alberto: Mmmh I’m not sure. I think it increased just because many use the model and regulators fear about non transparent decision making algorithms. However, in my experience I saw the companies applying models in commercial governance without worrying too much about explaining them. They even don’t worry toto much about model documentation and governance for the ones they do understand</dd>
+								</dl>
+								<dl>
+									<dt><strong>Q7: Do you think the ability to directly interact with the data and model during training process would help optimize issues such as overfitting and underfitting?</strong></dt>
+									<dd>Alberto: No sure, often one learns about under or overfitting after training is complete. It’s not quite clear to me how you can learn about over/under fitting in the middle of training. Perhaps one can check for over/under fitting with small batches and more frequently, but this already happens without the need to directly interact with the data or model during training.</dd>
+								</dl>
+								<dl>
+									<dt><strong></strong></dt>
+									<dd></dd>
+								</dl>
+
+							</div>
+							<div class="light-blue"></div>
+						</di>
 					</section>
 
 				</div>
