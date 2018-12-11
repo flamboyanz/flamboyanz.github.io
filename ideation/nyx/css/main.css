@@ -1,0 +1,7 @@
+.nyx{ color: #4286f4; }
+.black{ color: #000 !important; }
+
+ul {}
+ul li {line-height: 25px; font-size: 15px;
+    font-weight: normal;
+    color: #111;}
